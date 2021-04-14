@@ -1,0 +1,15 @@
+Worldname: "world"
+
+spawn:
+  x: 0
+  y: 0
+  z: 0
+
+
+shopItems:
+#  Item1:
+#    price:
+#    object:
+#    give:
+
+lifePrice: 100
