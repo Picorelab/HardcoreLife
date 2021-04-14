@@ -15,9 +15,9 @@ You **must** change the spawn location and the price of a life, the rest is not 
 This plugin using **Vault** and have been tested with EssentialX
 
 ## TODO
-- [] Better shop (customize, add new items, etc)
-- [] A leadbord of life & death
-- [] Show lives of an another player
+-[ ] Better shop (customize, add new items, etc)
+-[ ] A leadbord of life & death
+-[ ] Show lives of an another player
 Feel free to suggest !
 
 ## licences
