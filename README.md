@@ -2,13 +2,13 @@
 Minecraft Plugin for an Hardcore survival multiplayer with life system
 (Snapshot)
 
-##Commands
+## Commands
 
 ```/howmanylives``` -> Show the numbers of lives you have \
 ```/shop``` -> Show the shop to buy a life \
 ```/buylives``` -> Buy directly 1 life
 
-##Config
+## Config
 You **must** change the spawn location and the price of a life, the rest is not implemented yet
 
 ## Dependencies
