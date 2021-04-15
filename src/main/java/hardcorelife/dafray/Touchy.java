@@ -11,13 +11,17 @@ import hardcorelife.dafray.listeners.ShopListeners;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
+import org.bukkit.GameRule;
 import org.bukkit.World;
+import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitWorker;
 
 import java.io.File;
 import java.io.IOException;
@@ -61,6 +65,13 @@ public final class Touchy extends JavaPlugin {
             world.setDifficulty(Difficulty.HARD);
 
         }
+
+
+        getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule naturalRegeneration false"); // TODO - That doesn't work
+        Bukkit.getConsoleSender().sendMessage("The naturalRegeneration rules have been desactivated");
+
+
+
 
         PluginManager pm = getServer().getPluginManager();
 
