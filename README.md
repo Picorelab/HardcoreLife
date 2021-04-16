@@ -1,4 +1,4 @@
-![](https://media.forgecdn.net/avatars/371/642/637541656232185923.png)
+![HardcoreLife](https://www.spigotmc.org/data/resource_icons/91/91375.jpg?1618568731)
 
 # HardcoreLife
 Minecraft Plugin for an Hardcore survival multiplayer with life system
