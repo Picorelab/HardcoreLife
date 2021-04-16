@@ -16,6 +16,7 @@ You **must** change the spawn location and the price of a life, the rest is not 
 
 ## Dependencies
 This plugin using **Vault** and have been tested with EssentialX
+**You must do the command** : /gamerule naturalRegeneration false
 
 ## TODO
 - [ ] Better shop (customize, add new items, etc) \
