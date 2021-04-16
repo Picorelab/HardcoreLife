@@ -1,6 +1,9 @@
+![](https://media.forgecdn.net/avatars/371/642/637541656232185923.png)
+
 # HardcoreLife
 Minecraft Plugin for an Hardcore survival multiplayer with life system
 (Snapshot)
+
 
 ## Commands
 
