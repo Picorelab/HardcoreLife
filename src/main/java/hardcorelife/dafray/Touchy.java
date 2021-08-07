@@ -54,24 +54,20 @@ public final class Touchy extends JavaPlugin {
 
         World world = Bukkit.getWorld("world");
 
-
         getCommand("shop").setExecutor(new GuiShop());
         getCommand("buylives").setExecutor(new BuyLives());
         getCommand("howmanylives").setExecutor(new HowManyLives());
 
         assert world != null;
-        if(world.getDifficulty() != Difficulty.HARD){
+        if (world.getDifficulty() != Difficulty.HARD) {
             Bukkit.getConsoleSender().sendMessage("Difficulty changed to Hard, you forget it");
             world.setDifficulty(Difficulty.HARD);
 
         }
 
-
-        getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule naturalRegeneration false"); // TODO - That doesn't work
+        getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule naturalRegeneration false"); // TODO - That
+                                                                                                      // doesn't work
         Bukkit.getConsoleSender().sendMessage("The naturalRegeneration rules have been desactivated");
-
-
-
 
         PluginManager pm = getServer().getPluginManager();
 
@@ -81,8 +77,7 @@ public final class Touchy extends JavaPlugin {
 
     }
 
-
-    private World getWorld(){
+    private World getWorld() {
         return Bukkit.getWorld((String) Objects.requireNonNull(getConfig().get("Worlname")));
     }
 
@@ -112,7 +107,7 @@ public final class Touchy extends JavaPlugin {
         }
     }
 
-    public File saveLivesConfig(){
+    public File saveLivesConfig() {
         return LivesConfigFile;
     }
 
@@ -121,7 +116,8 @@ public final class Touchy extends JavaPlugin {
     }
 
     private boolean setupEconomy() {
-        RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
+        RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager()
+                .getRegistration(net.milkbowl.vault.economy.Economy.class);
         if (economyProvider != null) {
             economy = economyProvider.getProvider();
         }

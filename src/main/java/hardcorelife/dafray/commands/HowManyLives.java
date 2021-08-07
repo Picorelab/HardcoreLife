@@ -9,21 +9,19 @@ import org.jetbrains.annotations.NotNull;
 
 public class HowManyLives implements CommandExecutor {
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
+            @NotNull String[] args) {
 
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            if(PlayerLife.getConfigLives(player) >= 2){
+            if (PlayerLife.getConfigLives(player) >= 2) {
                 player.sendMessage("You have " + PlayerLife.getLives(player) + " lives");
-            }
-            else if (PlayerLife.getConfigLives(player) == 1){
+            } else if (PlayerLife.getConfigLives(player) == 1) {
                 player.sendMessage("You have " + PlayerLife.getLives(player) + " life left");
-            }
-            else if (PlayerLife.getConfigLives(player) == 0) {
+            } else if (PlayerLife.getConfigLives(player) == 0) {
                 player.sendMessage("Ooops but you don't have lives");
             }
-
 
         }
         return false;

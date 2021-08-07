@@ -1,25 +1,21 @@
 package hardcorelife.dafray.listeners;
 
-
 import hardcorelife.dafray.Touchy;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.UUID;
 
-public class PlayerLife{
+public class PlayerLife {
     private static Touchy touchy;
 
     private final Player player;
 
-
     public static HashMap<UUID, Integer> lives = new HashMap<>();
 
-
-    public PlayerLife(Player player){
+    public PlayerLife(Player player) {
         this.player = player;
     }
-
 
     public static int getLives(Player player) {
         if (!lives.containsKey(player.getUniqueId()))
@@ -31,7 +27,6 @@ public class PlayerLife{
         return Touchy.get().getLivesConfig().getInt(player.getUniqueId() + ".lives");
     }
 
-
     public static void addLives(Player player, int i) {
         int finalLives = getLives(player) + i;
         lives.put(player.getUniqueId(), finalLives);
@@ -42,13 +37,12 @@ public class PlayerLife{
         lives.put(player.getUniqueId(), finalLives);
 
     }
+
     // Force set numbers to lives
-    public void forceSetLives(int number){
+    public void forceSetLives(int number) {
         UUID uuid = this.player.getUniqueId();
         lives.put(player.getUniqueId(), number);
         // TODO - perms
     }
-
-
 
 }

@@ -17,27 +17,21 @@ import java.util.Objects;
 
 public class PlayerDeath implements Listener {
 
-
-
-
     @EventHandler
-    public void onDeath(PlayerDeathEvent event){
+    public void onDeath(PlayerDeathEvent event) {
 
         Player player = event.getEntity();
         PlayerLife playerLife = new PlayerLife(player);
         Location deathLocation = player.getLocation();
 
-
         PlayerLife.removeLives(player, 1);
 
-        if(PlayerLife.getLives(player) >= 2){
-            //TODO - You have "numbers" left;
-        }
-        else if(PlayerLife.getLives(player) == 1){
+        if (PlayerLife.getLives(player) >= 2) {
+            // TODO - You have "numbers" left;
+        } else if (PlayerLife.getLives(player) == 1) {
             // TODO - You have 1 left ! Be aware !
             player.sendMessage("You have 1 life left ! Be aware !");
-        }
-        else if(PlayerLife.getLives(player) == 0){
+        } else if (PlayerLife.getLives(player) == 0) {
 
             Bukkit.getScheduler().scheduleSyncDelayedTask(Touchy.get(), () -> player.spigot().respawn(), 2);
             // TODO - Oh no ! You have 0 left !
@@ -62,8 +56,6 @@ public class PlayerDeath implements Listener {
             Bukkit.getConsoleSender().sendMessage(Objects.requireNonNull(event.deathMessage()));
         }
 
-
     }
-
 
 }

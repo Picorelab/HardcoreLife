@@ -11,34 +11,30 @@ import java.io.IOException;
 
 public class PlayerJoinServer implements Listener {
 
-
     private Touchy touchy;
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) throws IOException {
 
-
         Player player = event.getPlayer();
 
-        if(player.hasPlayedBefore()){
+        if (player.hasPlayedBefore()) {
             // TODO - prout
-            if(player.getGameMode() == GameMode.SPECTATOR){
+            if (player.getGameMode() == GameMode.SPECTATOR) {
 
                 player.setFlySpeed(0);
                 player.setWalkSpeed(0);
 
-            }else{
+            } else {
 
                 player.setFlySpeed(0.1f);
                 player.setWalkSpeed(0.2f);
             }
-        }else{
+        } else {
             PlayerLife.lives.put(player.getUniqueId(), 1);
         }
 
-
-        //TODO - We can't reset a player actually
-
+        // TODO - We can't reset a player actually
 
     }
 }
