@@ -22,10 +22,11 @@ This plugin using **Vault** and have been tested with EssentialX
 
 ## TODO
 
-- [ ] Better shop (customize, add new items, etc) \
-- [ ] A leadbord of life & death \
-- [ ] Show lives of an another player \
-       Feel free to suggest & and create Pull requests !
+- [ ] Better shop (customize, add new items, etc)
+- [ ] A leadbord of life & death
+- [ ] Show lives of an another player
+
+Feel free to suggest & and create Pull requests!
 
 ## Licenced under GNU General Public License v3.0
 
