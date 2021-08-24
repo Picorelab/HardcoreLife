@@ -1,13 +1,9 @@
 package notsohardcore.drewburr;
 
-import net.milkbowl.vault.economy.Economy;
-import notsohardcore.drewburr.commands.BuyLives;
-import notsohardcore.drewburr.commands.GuiShop;
 import notsohardcore.drewburr.commands.HowManyLives;
 import notsohardcore.drewburr.listeners.PlayerDeath;
 import notsohardcore.drewburr.listeners.PlayerJoinServer;
 import notsohardcore.drewburr.listeners.PlayerLife;
-import notsohardcore.drewburr.listeners.ShopListeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
@@ -35,8 +31,6 @@ public final class Touchy extends JavaPlugin {
     private File LivesConfigFile;
     private FileConfiguration LivesConfig;
 
-    private static Economy economy = null;
-
     @Override
     public void onEnable() {
         instance = this;
@@ -46,34 +40,24 @@ public final class Touchy extends JavaPlugin {
         getConfig().options().copyDefaults(true);
         LivesConfig();
 
-        if (setupEconomy()) {
-            getLogger().info("Successfully hooked into vault.");
-        } else {
-            getLogger().info("Couldn't find vault continuing without it.");
-        }
-
         World world = Bukkit.getWorld("world");
 
-        getCommand("shop").setExecutor(new GuiShop());
-        getCommand("buylives").setExecutor(new BuyLives());
         getCommand("howmanylives").setExecutor(new HowManyLives());
 
         assert world != null;
         if (world.getDifficulty() != Difficulty.HARD) {
             Bukkit.getConsoleSender().sendMessage("Difficulty changed to Hard, you forget it");
             world.setDifficulty(Difficulty.HARD);
-
         }
 
         getServer().dispatchCommand(Bukkit.getConsoleSender(), "gamerule naturalRegeneration false"); // TODO - That
                                                                                                       // doesn't work
-        Bukkit.getConsoleSender().sendMessage("The naturalRegeneration rules have been desactivated");
+        Bukkit.getConsoleSender().sendMessage("The naturalRegeneration rules have been deactivated");
 
         PluginManager pm = getServer().getPluginManager();
 
         pm.registerEvents(new PlayerDeath(), this);
         pm.registerEvents(new PlayerJoinServer(), this);
-        pm.registerEvents(new ShopListeners(), this);
 
     }
 
@@ -113,19 +97,6 @@ public final class Touchy extends JavaPlugin {
 
     public FileConfiguration getLivesConfig() {
         return LivesConfig;
-    }
-
-    private boolean setupEconomy() {
-        RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager()
-                .getRegistration(net.milkbowl.vault.economy.Economy.class);
-        if (economyProvider != null) {
-            economy = economyProvider.getProvider();
-        }
-        return (economy != null);
-    }
-
-    public Economy getEconomy() {
-        return economy;
     }
 
     private void saveHashmapData() {
