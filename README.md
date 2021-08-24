@@ -6,28 +6,26 @@ PaperMC Plugin for not-so-hardcore survival server. Adds a configurable life sys
 
 Inspired by [DaFray31/HardcoreLife](https://github.com/DaFray31/HardcoreLife)
 
-## Quick Start
+## Setup
 
 ## Commands
 
 `/howmanylives` -> Show the numbers of lives you have
-`/shop` -> Show the shop to buy a life
-`/buylives` -> Buy directly 1 life
 
 ## Config
-
-You **must** change the spawn location and the price of a life, the rest is not implemented yet
 
 ## Dependencies
 
 This plugin using **Vault** and have been tested with EssentialX
-**You must do the command** : /gamerule naturalRegeneration false
 
 ## TODO
 
-- [ ] Better shop (customize, add new items, etc)
-- [ ] A leadbord of life & death
-- [ ] Show lives of an another player
+- [ ] Add support for showing and managing server lives when global_lives is True
+- [ ] Add command for admins to update a player's life count
+- [ ] Add announcements for when a player is eliminated, or the global life count changes
+- [ ] Update `\howmanylives` to be `\lives`
+- [ ] Remove hard-coded world name from config.yml
+- [ ] Actually test this to see if it even works
 
 Feel free to suggest & and create Pull requests!
 

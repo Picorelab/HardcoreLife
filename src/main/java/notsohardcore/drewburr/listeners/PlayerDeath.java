@@ -6,13 +6,15 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
+
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+
+import org.bukkit.Server;
 
 import notsohardcore.drewburr.Touchy;
+import notsohardcore.drewburr.helpers.PlayerLife;
 
 import java.util.Objects;
 
@@ -24,23 +26,21 @@ public class PlayerDeath implements Listener {
         Player player = event.getEntity();
         PlayerLife playerLife = new PlayerLife(player);
         Location deathLocation = player.getLocation();
+        Server.Spigot server = new Server.Spigot();
 
-        PlayerLife.removeLives(player, 1);
+        PlayerLife.removeLife(player);
 
-        if (PlayerLife.getLives(player) >= 2) {
-            // TODO - You have "numbers" left;
-        } else if (PlayerLife.getLives(player) == 1) {
-            // TODO - You have 1 left ! Be aware !
-            player.sendMessage("You have 1 life left ! Be aware !");
-        } else if (PlayerLife.getLives(player) == 0) {
+        int remainingLives = PlayerLife.getLives(player);
 
+        // TODO - Broadcast remaining lives for individual or server
+        final TextComponent component = Component.text("You have " + remainingLives + " live(s) remaining.");
+        server.broadcast(component);
+
+        if (remainingLives == 0) {
+            // Wait for player to respawn
             Bukkit.getScheduler().scheduleSyncDelayedTask(Touchy.get(), () -> player.spigot().respawn(), 2);
-            // TODO - Oh no ! You have 0 left !
 
             player.sendMessage("Oh no ! You don't have life anymore ! ");
-            Bukkit.broadcastMessage(player.getName() + " Died, he have 0 lives left !");
-            // TODO - Fireworks
-            // TODO - Spectator
 
             Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Touchy.get(), new Runnable() {
                 public void run() {
