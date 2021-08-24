@@ -2,7 +2,7 @@
 
 ![HardcoreLife](https://www.spigotmc.org/data/resource_icons/91/91375.jpg?1618568731)
 
-PaperMC Plugin for not-so-hardcore survival server. Adds a configurable life system that can give everyone a set of lives, or a global server dealth limit.
+PaperMC Plugin for not-so-hardcore survival server. Adds a configurable life system that can give everyone a set of lives, or a global server death limit.
 
 Inspired by [DaFray31/HardcoreLife](https://github.com/DaFray31/HardcoreLife)
 
