@@ -1,6 +1,5 @@
-package hardcorelife.dafray.listeners;
+package notsohardcore.drewburr.listeners;
 
-import hardcorelife.dafray.Touchy;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -10,6 +9,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
+
+import notsohardcore.drewburr.Touchy;
 
 public class ShopListeners implements Listener {
 

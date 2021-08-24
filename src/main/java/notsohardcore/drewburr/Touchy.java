@@ -1,14 +1,14 @@
-package hardcorelife.dafray;
+package notsohardcore.drewburr;
 
-import hardcorelife.dafray.commands.BuyLives;
-import hardcorelife.dafray.commands.GuiShop;
-import hardcorelife.dafray.commands.HowManyLives;
-import hardcorelife.dafray.listeners.PlayerDeath;
-import hardcorelife.dafray.listeners.PlayerJoinServer;
-import hardcorelife.dafray.listeners.PlayerLife;
-
-import hardcorelife.dafray.listeners.ShopListeners;
 import net.milkbowl.vault.economy.Economy;
+import notsohardcore.drewburr.commands.BuyLives;
+import notsohardcore.drewburr.commands.GuiShop;
+import notsohardcore.drewburr.commands.HowManyLives;
+import notsohardcore.drewburr.listeners.PlayerDeath;
+import notsohardcore.drewburr.listeners.PlayerJoinServer;
+import notsohardcore.drewburr.listeners.PlayerLife;
+import notsohardcore.drewburr.listeners.ShopListeners;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.GameRule;

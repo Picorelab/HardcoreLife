@@ -1,7 +1,5 @@
-package hardcorelife.dafray.commands;
+package notsohardcore.drewburr.commands;
 
-import hardcorelife.dafray.Touchy;
-import hardcorelife.dafray.listeners.PlayerLife;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -9,6 +7,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+
+import notsohardcore.drewburr.Touchy;
+import notsohardcore.drewburr.listeners.PlayerLife;
 
 public class BuyLives implements CommandExecutor {
 

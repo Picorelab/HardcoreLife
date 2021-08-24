@@ -1,4 +1,4 @@
-package hardcorelife.dafray.listeners;
+package notsohardcore.drewburr.listeners;
 
 import org.bukkit.entity.Player;
 

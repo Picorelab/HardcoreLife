@@ -1,6 +1,5 @@
-package hardcorelife.dafray.listeners;
+package notsohardcore.drewburr.listeners;
 
-import hardcorelife.dafray.Touchy;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -12,6 +11,8 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+
+import notsohardcore.drewburr.Touchy;
 
 import java.util.Objects;
 

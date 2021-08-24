@@ -1,11 +1,12 @@
-package hardcorelife.dafray.commands;
+package notsohardcore.drewburr.commands;
 
-import hardcorelife.dafray.listeners.PlayerLife;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+
+import notsohardcore.drewburr.listeners.PlayerLife;
 
 public class HowManyLives implements CommandExecutor {
     @Override

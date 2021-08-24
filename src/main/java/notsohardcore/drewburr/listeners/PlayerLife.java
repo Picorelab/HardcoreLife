@@ -1,7 +1,8 @@
-package hardcorelife.dafray.listeners;
+package notsohardcore.drewburr.listeners;
 
-import hardcorelife.dafray.Touchy;
 import org.bukkit.entity.Player;
+
+import notsohardcore.drewburr.Touchy;
 
 import java.util.HashMap;
 import java.util.UUID;

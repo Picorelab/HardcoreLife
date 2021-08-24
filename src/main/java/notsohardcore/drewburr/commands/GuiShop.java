@@ -1,6 +1,5 @@
-package hardcorelife.dafray.commands;
+package notsohardcore.drewburr.commands;
 
-import hardcorelife.dafray.Touchy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -11,6 +10,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
+
+import notsohardcore.drewburr.Touchy;
 
 import java.util.Collections;
 

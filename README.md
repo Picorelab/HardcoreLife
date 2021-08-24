@@ -1,9 +1,12 @@
-# HardcoreLife
+# NoSoHardcore
 
 ![HardcoreLife](https://www.spigotmc.org/data/resource_icons/91/91375.jpg?1618568731)
 
-Minecraft Plugin for an Hardcore survival multiplayer with life system
-(Snapshot)
+PaperMC Plugin for not-so-hardcore survival server. Adds a configurable life system that can give everyone a set of lives, or a global server dealth limit.
+
+Inspired by [DaFray31/HardcoreLife](https://github.com/DaFray31/HardcoreLife)
+
+## Quick Start
 
 ## Commands
 
