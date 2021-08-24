@@ -9,9 +9,9 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>NoSoHardcore</name>
+    <name>NotSoHardcore</name>
 
-    <description>NoSoHardcore</description>
+    <description>NotSoHardcore</description>
     <properties>
         <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -1,4 +1,4 @@
-# NoSoHardcore
+# NotSoHardcore
 
 ![HardcoreLife](https://www.spigotmc.org/data/resource_icons/91/91375.jpg?1618568731)
 
