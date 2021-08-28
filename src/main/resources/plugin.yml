@@ -1,9 +1,9 @@
 name: NotSoHardcore
 version: ${project.version}
-main: notsohardcore.drewburr.Touchy
+main: notsohardcore.chryscorelab.Touchy
 api-version: 1.16
 load: POSTWORLD
-authors: [drewburr]
+authors: [DaFray31, drewburr]
 description: NotSoHardcore
 softdepend: [Vault]
 commands:

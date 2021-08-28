@@ -1,11 +1,11 @@
-package notsohardcore.drewburr.listeners;
+package notsohardcore.chryscorelab.listeners;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import notsohardcore.drewburr.helpers.PlayerLife;
+import notsohardcore.chryscorelab.helpers.PlayerLife;
 
 import java.io.IOException;
 

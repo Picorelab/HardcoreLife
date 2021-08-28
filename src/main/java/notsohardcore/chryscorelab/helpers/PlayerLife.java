@@ -1,8 +1,8 @@
-package notsohardcore.drewburr.helpers;
+package notsohardcore.chryscorelab.helpers;
 
 import org.bukkit.entity.Player;
 
-import notsohardcore.drewburr.Touchy;
+import notsohardcore.chryscorelab.Touchy;
 
 import java.util.HashMap;
 import java.util.UUID;

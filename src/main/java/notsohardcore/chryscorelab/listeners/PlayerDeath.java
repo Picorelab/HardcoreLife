@@ -1,4 +1,4 @@
-package notsohardcore.drewburr.listeners;
+package notsohardcore.chryscorelab.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -10,11 +10,10 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import notsohardcore.chryscorelab.Touchy;
+import notsohardcore.chryscorelab.helpers.PlayerLife;
 
 import org.bukkit.Server;
-
-import notsohardcore.drewburr.Touchy;
-import notsohardcore.drewburr.helpers.PlayerLife;
 
 import java.util.Objects;
 

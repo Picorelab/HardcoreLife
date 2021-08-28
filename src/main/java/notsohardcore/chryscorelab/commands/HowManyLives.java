@@ -1,4 +1,4 @@
-package notsohardcore.drewburr.commands;
+package notsohardcore.chryscorelab.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import notsohardcore.drewburr.helpers.PlayerLife;
+import notsohardcore.chryscorelab.helpers.PlayerLife;
 
 public class HowManyLives implements CommandExecutor {
     @Override
