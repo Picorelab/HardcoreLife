@@ -1,10 +1,10 @@
-name: NotSoHardcore
+name: Hardcorelife
 version: ${project.version}
-main: notsohardcore.chryscorelab.Touchy
+main: hardcorelife.chryscorelab.Touchy
 api-version: 1.16
 load: POSTWORLD
 authors: [DaFray31, drewburr]
-description: NotSoHardcore
+description: Hardcorelife
 softdepend: [Vault]
 commands:
   howmanylives:

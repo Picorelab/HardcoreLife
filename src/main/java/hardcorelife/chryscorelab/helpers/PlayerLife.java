@@ -1,8 +1,8 @@
-package notsohardcore.chryscorelab.helpers;
+package hardcorelife.chryscorelab.helpers;
 
 import org.bukkit.entity.Player;
 
-import notsohardcore.chryscorelab.Touchy;
+import hardcorelife.chryscorelab.Touchy;
 
 import java.util.HashMap;
 import java.util.UUID;

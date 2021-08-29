@@ -1,4 +1,4 @@
-package notsohardcore.chryscorelab;
+package hardcorelife.chryscorelab;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -8,10 +8,10 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import notsohardcore.chryscorelab.commands.HowManyLives;
-import notsohardcore.chryscorelab.helpers.PlayerLife;
-import notsohardcore.chryscorelab.listeners.PlayerDeath;
-import notsohardcore.chryscorelab.listeners.PlayerJoinServer;
+import hardcorelife.chryscorelab.commands.HowManyLives;
+import hardcorelife.chryscorelab.helpers.PlayerLife;
+import hardcorelife.chryscorelab.listeners.PlayerDeath;
+import hardcorelife.chryscorelab.listeners.PlayerJoinServer;
 
 import java.io.File;
 import java.io.IOException;

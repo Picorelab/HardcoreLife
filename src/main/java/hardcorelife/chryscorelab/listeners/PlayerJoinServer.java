@@ -1,11 +1,11 @@
-package notsohardcore.chryscorelab.listeners;
+package hardcorelife.chryscorelab.listeners;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import notsohardcore.chryscorelab.helpers.PlayerLife;
+import hardcorelife.chryscorelab.helpers.PlayerLife;
 
 import java.io.IOException;
 

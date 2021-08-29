@@ -1,4 +1,4 @@
-package notsohardcore.chryscorelab.listeners;
+package hardcorelife.chryscorelab.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -8,10 +8,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+import hardcorelife.chryscorelab.Touchy;
+import hardcorelife.chryscorelab.helpers.PlayerLife;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
-import notsohardcore.chryscorelab.Touchy;
-import notsohardcore.chryscorelab.helpers.PlayerLife;
 
 import org.bukkit.Server;
 
