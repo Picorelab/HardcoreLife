@@ -7,7 +7,6 @@ Minecraft Plugin for an Hardcore survival multiplayer with life system
 
 ## Commands
 
-`/howmanylives` -> Show the numbers of lives you have
 `/lives` -> Show the numbers of lives you have
 
 ## Config
