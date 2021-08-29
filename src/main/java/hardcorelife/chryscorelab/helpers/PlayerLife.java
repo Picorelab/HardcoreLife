@@ -8,8 +8,6 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class PlayerLife {
-    private static Touchy touchy;
-
     private final Player player;
 
     private static HashMap<UUID, Integer> lives = new HashMap<>();
@@ -34,7 +32,7 @@ public class PlayerLife {
 
     private static int getConfigLives(Player player) {
         // Pulls the current number of lives for a player from the config
-        return touchy.getPlayerLivesConfig(getUUID(player));
+        return Touchy.get().getPlayerLivesConfig(getUUID(player));
     }
 
     public static int addLife(Player player) {
@@ -60,12 +58,12 @@ public class PlayerLife {
     private static void setLives(Player player, int lifeCount) {
         // Updates the player's life count, then saves configs
         lives.put(getUUID(player), lifeCount);
-        touchy.savePlayerLifeConfig(getUUID(player), lifeCount);
+        Touchy.get().savePlayerLifeConfig(getUUID(player), lifeCount);
     }
 
     public static void saveLivesData() {
         // Saves lives object to disk
-        touchy.saveHashmapData(lives);
+        Touchy.get().saveHashmapData(lives);
     }
 
     public static HashMap<UUID, Integer> getLivesMap() {
@@ -74,7 +72,7 @@ public class PlayerLife {
 
     private static UUID getUUID(Player player) {
         // Wrapper to handle when global lives are enabled
-        if (Touchy.globalLivesEnabled)
+        if (Touchy.get().globalLivesEnabled())
             return new UUID(0, 0);
         else
             return player.getUniqueId();

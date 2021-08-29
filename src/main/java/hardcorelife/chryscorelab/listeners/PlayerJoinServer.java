@@ -24,7 +24,7 @@ public class PlayerJoinServer implements Listener {
 
         // TODO - Show messages about the number of lives remaining server/player,
         // sending to the players (even more, show a history of past events)
-        if (Touchy.globalLivesEnabled) {
+        if (Touchy.get().globalLivesEnabled()) {
             player.sendMessage(" Welcome back aboard " + player.getName() + "! The server has "
                     + PlayerLife.getLives(player) + " live(s) remaining");
         } else {
