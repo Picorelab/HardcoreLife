@@ -28,38 +28,44 @@ public class PlayerDeath implements Listener {
         Location deathLocation = player.getLocation();
         Server.Spigot server = new Server.Spigot();
 
-        PlayerLife.removeLife(player);
+        if(!Touchy.globalLivesEnabled){
+            PlayerLife.removeLife(player);
 
-        if(Touchy.globalLivesEnabled){
-            int remainingLives = /* ServerGetLife */ ;
-        }else{
+
             int remainingLives = PlayerLife.getLives(player);
+
+
+            // TODO - Broadcast remaining lives for individual or server
+
+            final TextComponent component = Component.text("You have " + remainingLives + " live(s) remaining.");
+            server.broadcast((BaseComponent) component);
+
+            if (remainingLives == 0) {
+                // Wait for player to respawn
+                Bukkit.getScheduler().scheduleSyncDelayedTask(Touchy.get(), () -> player.spigot().respawn(), 2);
+
+                player.sendMessage("Oh no ! You don't have life anymore ! ");
+
+                Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Touchy.get(), new Runnable() {
+                    public void run() {
+                        player.sendMessage("You died, spectator mode, press 1");
+                    }
+                }, (3 * 20));
+
+                player.setGameMode(GameMode.SPECTATOR);
+
+                player.setFlySpeed(0);
+                player.setWalkSpeed(0);
+                player.teleport(deathLocation);
+
+                Bukkit.getConsoleSender().sendMessage(Objects.requireNonNull(event.deathMessage()));
+            }
+        } else{
+            /* ServerLife.removeLife;
+            int remainingLives = ServerLife.getLives
+             */
         }
 
-        // TODO - Broadcast remaining lives for individual or server
-        final TextComponent component = Component.text("You have " + remainingLives + " live(s) remaining.");
-        server.broadcast((BaseComponent) component);
-
-        if (remainingLives == 0) {
-            // Wait for player to respawn
-            Bukkit.getScheduler().scheduleSyncDelayedTask(Touchy.get(), () -> player.spigot().respawn(), 2);
-
-            player.sendMessage("Oh no ! You don't have life anymore ! ");
-
-            Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Touchy.get(), new Runnable() {
-                public void run() {
-                    player.sendMessage("You died, spectator mode, press 1");
-                }
-            }, (3 * 20));
-
-            player.setGameMode(GameMode.SPECTATOR);
-
-            player.setFlySpeed(0);
-            player.setWalkSpeed(0);
-            player.teleport(deathLocation);
-
-            Bukkit.getConsoleSender().sendMessage(Objects.requireNonNull(event.deathMessage()));
-        }
 
     }
 
