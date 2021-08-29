@@ -1,12 +1,10 @@
 name: Hardcorelife
 version: ${project.version}
-main: hardcorelife.dafray.Touchy
+main: hardcorelife.chryscorelab.Touchy
 api-version: 1.16
 load: POSTWORLD
-authors: [ DaFray31 ]
+authors: [DaFray31, drewburr]
 description: Hardcorelife
 softdepend: [Vault]
 commands:
-  shop:
-  buylives:
   howmanylives:
