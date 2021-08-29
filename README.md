@@ -1,17 +1,20 @@
-# Hardcorelife
+# HardcoreLife
 
 ![HardcoreLife](https://www.spigotmc.org/data/resource_icons/91/91375.jpg?1618568731)
 
 Minecraft Plugin for an Hardcore survival multiplayer with life system
-(Snapshot)
+with 2 options :
+
+- Global Lives, the server have lives, if player die, the server lost a life
+- Player Lives, Players have their own lives
 
 ## Commands
 
-`/lives` -> Show the numbers of lives you have
+`/lives` : Show the numbers of lives you have
 
 ## Config
 
-You **must** set the spawn location in config.yml, this is not implemented yet
+See the `config.yml` file of the plugin, more details on the [Wiki](https://github.com/Chryscorelab/HardcoreLife/wiki/Config-files) 
 
 ## Dependencies
 
@@ -22,7 +25,7 @@ This plugin using **Vault** and have been tested with EssentialX
 - [ ] Add support for showing and managing server lives when global_lives is True
 - [ ] Add command for admins to update a player's life count
 - [ ] Add announcements for when a player is eliminated, or the global life count changes
-- [ ] Update `\howmanylives` to be `\lives`
+- [x] Update `\howmanylives` to be `\lives`
 - [ ] Remove hard-coded world name from config.yml
 - [ ] Actually test this to see if it even works
 - [ ] Show lives of an another player
