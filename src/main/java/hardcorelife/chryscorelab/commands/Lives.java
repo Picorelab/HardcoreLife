@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import hardcorelife.chryscorelab.helpers.PlayerLife;
 
-public class HowManyLives implements CommandExecutor {
+public class Lives implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
             @NotNull String[] args) {

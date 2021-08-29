@@ -1,5 +1,6 @@
 package hardcorelife.chryscorelab.listeners;
 
+import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -29,11 +30,15 @@ public class PlayerDeath implements Listener {
 
         PlayerLife.removeLife(player);
 
-        int remainingLives = PlayerLife.getLives(player);
+        if(Touchy.globalLivesEnabled){
+            int remainingLives = /* ServerGetLife */ ;
+        }else{
+            int remainingLives = PlayerLife.getLives(player);
+        }
 
         // TODO - Broadcast remaining lives for individual or server
         final TextComponent component = Component.text("You have " + remainingLives + " live(s) remaining.");
-        server.broadcast(component);
+        server.broadcast((BaseComponent) component);
 
         if (remainingLives == 0) {
             // Wait for player to respawn

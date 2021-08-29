@@ -7,4 +7,4 @@ authors: [DaFray31, drewburr]
 description: Hardcorelife
 softdepend: [Vault]
 commands:
-  howmanylives:
+  lives:

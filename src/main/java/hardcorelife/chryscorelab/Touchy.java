@@ -8,7 +8,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import hardcorelife.chryscorelab.commands.HowManyLives;
+import hardcorelife.chryscorelab.commands.Lives;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
 import hardcorelife.chryscorelab.listeners.PlayerDeath;
 import hardcorelife.chryscorelab.listeners.PlayerJoinServer;
@@ -17,10 +17,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public final class Touchy extends JavaPlugin {
 
+    public static boolean globalLivesEnabled;
     private static Touchy instance;
 
     @Override
@@ -32,12 +34,13 @@ public final class Touchy extends JavaPlugin {
         getConfig().options().copyDefaults(true);
         GetLivesConfigFile();
 
-        // TODO - Make this dynamic
-        World world = Bukkit.getWorld("world");
+        // TODO - Make this dynamic | This is really a need ?
+        //World world = Bukkit.getWorld("world");
 
-        getCommand("howmanylives").setExecutor(new HowManyLives());
 
-        assert world != null;
+        Objects.requireNonNull(getCommand("lives")).setExecutor(new Lives());
+
+        //assert world != null;
 
         PluginManager pm = getServer().getPluginManager();
 
