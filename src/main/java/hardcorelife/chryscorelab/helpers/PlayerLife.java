@@ -26,15 +26,15 @@ public class PlayerLife {
     public static int getLives(Player player) {
         // Get the current number of lives for a player
         // Will pull player data from the config, if not already loaded
-        if (!lives.containsKey(player.getUniqueId())) {
+        if (!lives.containsKey(getUUID(player))) {
             setLives(player, getConfigLives(player));
         }
-        return lives.get(player.getUniqueId());
+        return lives.get(getUUID(player));
     }
 
     private static int getConfigLives(Player player) {
         // Pulls the current number of lives for a player from the config
-        return touchy.getPlayerLivesConfig(player.getUniqueId());
+        return touchy.getPlayerLivesConfig(getUUID(player));
     }
 
     public static int addLife(Player player) {
@@ -59,9 +59,8 @@ public class PlayerLife {
 
     private static void setLives(Player player, int lifeCount) {
         // Updates the player's life count, then saves configs
-        // TODO - Does not support global lives
-        lives.put(player.getUniqueId(), lifeCount);
-        touchy.savePlayerLifeConfig(player.getUniqueId(), lifeCount);
+        lives.put(getUUID(player), lifeCount);
+        touchy.savePlayerLifeConfig(getUUID(player), lifeCount);
     }
 
     public static void saveLivesData() {
@@ -71,6 +70,14 @@ public class PlayerLife {
 
     public static HashMap<UUID, Integer> getLivesMap() {
         return lives;
+    }
+
+    private static UUID getUUID(Player player) {
+        // Wrapper to handle when global lives are enabled
+        if (Touchy.globalLivesEnabled)
+            return new UUID(0, 0);
+        else
+            return player.getUniqueId();
     }
 
 }
