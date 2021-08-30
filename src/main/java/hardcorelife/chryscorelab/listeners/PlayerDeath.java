@@ -46,12 +46,12 @@ public class PlayerDeath implements Listener {
         } else {
             // TODO - Change this to only send to the player,
             // once /lives supports getting life count of other players
-            Bukkit.broadcastMessage(player.getName() + " has " + remainingLives + " live(s) remaining.");
+            player.sendMessage("You have " + remainingLives + " live(s) remaining.");
 
             if (remainingLives == 0) {
                 // handle player permadeath
+                Bukkit.broadcastMessage(player.getName() + " has run out of lives.");
                 player.setGameMode(GameMode.SPECTATOR);
-
                 // Prevent movement on death
                 player.setFlySpeed(0);
                 player.setWalkSpeed(0);
