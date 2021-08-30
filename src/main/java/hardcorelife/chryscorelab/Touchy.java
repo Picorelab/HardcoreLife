@@ -108,6 +108,7 @@ public final class Touchy extends JavaPlugin {
     }
 
     public void savePlayerLifeConfig(UUID uuid, int lives) {
+        // Update the life value for a single player, in lives.yml
         FileConfiguration LivesConfig = GetLivesConfig();
         LivesConfig.set(uuid + ".lives", lives);
         SetLivesConfig(LivesConfig);
