@@ -1,3 +1,4 @@
 
 starting_lives: 3
 global_lives: True # True : Players will share lives with the server | False : Players will have their own lives
+language: en_EN #English by Default

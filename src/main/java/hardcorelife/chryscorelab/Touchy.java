@@ -1,7 +1,6 @@
 package hardcorelife.chryscorelab;
 
-import org.bukkit.Bukkit;
-import org.bukkit.World;
+
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
