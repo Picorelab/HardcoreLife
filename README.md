@@ -23,12 +23,12 @@ This plugin using **Vault** and have been tested with EssentialX
 ## TODO
 
 - [x] Add support for showing and managing server lives when global_lives is True
-- [ ] Add command for admins to update a player's life count
-- [x] Add announcements for when a player is eliminated, or the global life count changes - I made it so all deaths will announce the updated life count.
+- [x] Add command for admins to update a player's life count (`\setlives`)
+- [x] Add announcements for when a player is eliminated, or the global life count changes
 - [x] Update `\howmanylives` to be `\lives`
 - [ ] Remove hard-coded world name from config.yml
 - [x] Actually test this to see if it even works (working so far!)
-- [ ] Update `/lives` to show lives of an another player
+- [x] Update `\lives` to show lives of another player
 
       Feel free to suggest & and create Pull requests!
 
