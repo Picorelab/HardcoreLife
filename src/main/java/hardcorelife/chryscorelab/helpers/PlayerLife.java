@@ -57,6 +57,9 @@ public class PlayerLife {
 
     private static void setLives(Player player, int lifeCount) {
         // Updates the player's life count, then saves configs
+        if (lifeCount < 0) {
+            lifeCount = 0;
+        }
         lives.put(getUUID(player), lifeCount);
         Touchy.get().savePlayerLifeConfig(getUUID(player), lifeCount);
     }
