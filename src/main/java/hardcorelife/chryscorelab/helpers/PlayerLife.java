@@ -49,9 +49,8 @@ public class PlayerLife {
         return finalLives;
     }
 
-    public void forceSetLives(int lifeCount) {
-        // Force set numbers to lives
-        // TODO - Should be OP only
+    public static void forceSetLives(Player player, int lifeCount) {
+        // Force set life value
         setLives(player, lifeCount);
     }
 
