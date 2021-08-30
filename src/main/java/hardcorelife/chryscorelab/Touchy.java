@@ -22,7 +22,6 @@ import java.util.UUID;
 
 public final class Touchy extends JavaPlugin {
 
-    public static boolean globalLivesEnabled;
     private static Touchy instance;
 
     @Override
@@ -35,12 +34,11 @@ public final class Touchy extends JavaPlugin {
         GetLivesConfigFile();
 
         // TODO - Make this dynamic | This is really a need ?
-        //World world = Bukkit.getWorld("world");
-
+        // World world = Bukkit.getWorld("world");
 
         Objects.requireNonNull(getCommand("lives")).setExecutor(new Lives());
 
-        //assert world != null;
+        // assert world != null;
 
         PluginManager pm = getServer().getPluginManager();
 
