@@ -1,9 +1,9 @@
 package hardcorelife.chryscorelab.listeners;
 
-import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,12 +11,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 import hardcorelife.chryscorelab.Touchy;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
-
-import org.bukkit.Server;
-
-import java.util.Objects;
 
 public class PlayerDeath implements Listener {
 
@@ -24,49 +18,55 @@ public class PlayerDeath implements Listener {
     public void onDeath(PlayerDeathEvent event) {
 
         Player player = event.getEntity();
-        PlayerLife playerLife = new PlayerLife(player);
         Location deathLocation = player.getLocation();
         Server.Spigot server = new Server.Spigot();
 
-        if(!Touchy.globalLivesEnabled){
-            PlayerLife.removeLife(player);
+        PlayerLife.removeLife(player);
 
+        int remainingLives = PlayerLife.getLives(player);
 
-            int remainingLives = PlayerLife.getLives(player);
-
-
-            // TODO - Broadcast remaining lives for individual or server
-
-            final TextComponent component = Component.text("You have " + remainingLives + " live(s) remaining.");
-            server.broadcast((BaseComponent) component);
+        if (Touchy.get().globalLivesEnabled()) {
+            // final TextComponent component = Component.text("The server has " +
+            // remainingLives + " live(s) remaining.");
+            // server.broadcast(component);
+            Bukkit.broadcastMessage("The server has " + remainingLives + " live(s) remaining.");
 
             if (remainingLives == 0) {
-                // Wait for player to respawn
-                Bukkit.getScheduler().scheduleSyncDelayedTask(Touchy.get(), () -> player.spigot().respawn(), 2);
+                // handle server permadeath
+                Bukkit.setDefaultGameMode(GameMode.SPECTATOR);
 
-                player.sendMessage("Oh no ! You don't have life anymore ! ");
+                // Change everyone's gamemode to spectator
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    p.setGameMode(GameMode.SPECTATOR);
+                }
+            } else {
+                respawnPlayer(player);
+            }
 
-                Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Touchy.get(), new Runnable() {
-                    public void run() {
-                        player.sendMessage("You died, spectator mode, press 1");
-                    }
-                }, (3 * 20));
+        } else {
+            // TODO - Change this to only send to the player,
+            // once /lives supports getting life count of other players
+            Bukkit.broadcastMessage(player.getName() + " has " + remainingLives + " live(s) remaining.");
 
+            if (remainingLives == 0) {
+                // handle player permadeath
                 player.setGameMode(GameMode.SPECTATOR);
 
+                // Prevent movement on death
                 player.setFlySpeed(0);
                 player.setWalkSpeed(0);
                 player.teleport(deathLocation);
 
-                Bukkit.getConsoleSender().sendMessage(Objects.requireNonNull(event.deathMessage()));
+            } else {
+                respawnPlayer(player);
             }
-        } else{
-            /* ServerLife.removeLife;
-            int remainingLives = ServerLife.getLives
-             */
         }
+    }
 
-
+    private static void respawnPlayer(Player player) {
+        // Handle respawning a new player
+        // This may be necessary if hardcore == True
+        player.setGameMode(GameMode.SURVIVAL);
     }
 
 }
