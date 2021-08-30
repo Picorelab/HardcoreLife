@@ -28,6 +28,8 @@ public class Lives implements CommandExecutor {
             Player player = (Player) sender;
 
             sender.sendMessage("You have " + PlayerLife.getLives(player) + " live(s) left.");
+        } else {
+            return false;
         }
 
         return true;
