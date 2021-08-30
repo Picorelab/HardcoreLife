@@ -8,4 +8,8 @@ description: Hardcorelife
 softdepend: [Vault]
 commands:
   lives:
+    description: Show a player's current life count
+    usage: \lives [player]
   setlives:
+    description: Set the life count of a player
+    usage: \setlives [player] <value>

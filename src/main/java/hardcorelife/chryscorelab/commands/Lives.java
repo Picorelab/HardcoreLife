@@ -21,6 +21,7 @@ public class Lives implements CommandExecutor {
                 sender.sendMessage(player.getName() + " has " + PlayerLife.getLives(player) + " live(s) left.");
             } else {
                 sender.sendMessage("ERROR: Unknown player '" + args[0] + "'");
+                return false;
             }
 
         } else if (sender instanceof Player) {
@@ -29,6 +30,6 @@ public class Lives implements CommandExecutor {
             sender.sendMessage("You have " + PlayerLife.getLives(player) + " live(s) left.");
         }
 
-        return false;
+        return true;
     }
 }
