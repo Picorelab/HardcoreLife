@@ -1,5 +1,7 @@
 package hardcorelife.chryscorelab.listeners;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -19,17 +21,18 @@ public class PlayerDeath implements Listener {
 
         Player player = event.getEntity();
         Location deathLocation = player.getLocation();
-        Server.Spigot server = new Server.Spigot();
+        Server server = Touchy.get().getServer();
+
 
         PlayerLife.removeLife(player);
 
         int remainingLives = PlayerLife.getLives(player);
 
         if (Touchy.get().globalLivesEnabled()) {
-            // final TextComponent component = Component.text("The server has " +
-            // remainingLives + " live(s) remaining.");
-            // server.broadcast(component);
-            Bukkit.broadcastMessage("The server has " + remainingLives + " live(s) remaining.");
+            TextComponent component = Component.text("The server has " +
+            remainingLives + " live(s) remaining.");
+            server.broadcast(component);
+
 
             if (remainingLives == 0) {
                 // handle server permadeath
@@ -50,7 +53,8 @@ public class PlayerDeath implements Listener {
 
             if (remainingLives == 0) {
                 // handle player permadeath
-                Bukkit.broadcastMessage(player.getName() + " has run out of lives.");
+                TextComponent component = Component.text(player.getName() + " has run out of lives.");
+                server.broadcast(component);
                 player.setGameMode(GameMode.SPECTATOR);
                 // Prevent movement on death
                 player.setFlySpeed(0);
