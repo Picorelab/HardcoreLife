@@ -9,6 +9,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import hardcorelife.chryscorelab.commands.Lives;
+import hardcorelife.chryscorelab.commands.SetLives;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
 import hardcorelife.chryscorelab.listeners.PlayerDeath;
 import hardcorelife.chryscorelab.listeners.PlayerJoinServer;
@@ -37,6 +38,7 @@ public final class Touchy extends JavaPlugin {
         // World world = Bukkit.getWorld("world");
 
         Objects.requireNonNull(getCommand("lives")).setExecutor(new Lives());
+        Objects.requireNonNull(getCommand("setlives")).setExecutor(new SetLives());
 
         // assert world != null;
 

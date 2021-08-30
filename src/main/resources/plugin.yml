@@ -8,3 +8,4 @@ description: Hardcorelife
 softdepend: [Vault]
 commands:
   lives:
+  setlives:
