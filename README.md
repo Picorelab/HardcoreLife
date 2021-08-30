@@ -14,7 +14,7 @@ with 2 options :
 
 ## Config
 
-See the `config.yml` file of the plugin, more details on the [Wiki](https://github.com/Chryscorelab/HardcoreLife/wiki/Config-files) 
+See the `config.yml` file of the plugin, more details on the [Wiki](https://github.com/Chryscorelab/HardcoreLife/wiki/Config-files)
 
 ## Dependencies
 
@@ -22,13 +22,13 @@ This plugin using **Vault** and have been tested with EssentialX
 
 ## TODO
 
-- [ ] Add support for showing and managing server lives when global_lives is True
+- [x] Add support for showing and managing server lives when global_lives is True
 - [ ] Add command for admins to update a player's life count
-- [ ] Add announcements for when a player is eliminated, or the global life count changes
+- [x] Add announcements for when a player is eliminated, or the global life count changes - I made it so all deaths will announce the updated life count.
 - [x] Update `\howmanylives` to be `\lives`
 - [ ] Remove hard-coded world name from config.yml
-- [ ] Actually test this to see if it even works
-- [ ] Show lives of an another player
+- [x] Actually test this to see if it even works (working so far!)
+- [ ] Update `/lives` to show lives of an another player
 
       Feel free to suggest & and create Pull requests!
 
