@@ -1,6 +1,6 @@
 # HardcoreLife
 
-![HardcoreLife](https://www.spigotmc.org/data/resource_icons/91/91375.jpg?1618568731)
+[![HardcoreLife](https://www.spigotmc.org/data/resource_icons/91/91375.jpg?1618568731)](https://dev.bukkit.org/projects/hardcorelife)
 
 Minecraft Plugin for an Hardcore survival multiplayer with life system
 with 2 options :
