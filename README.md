@@ -12,6 +12,8 @@ with 2 options :
 
 `/lives` : Show the numbers of lives you have
 
+`/setlive` : Set the life count of a player (must be OP)
+
 ## Config
 
 See the `config.yml` file of the plugin, more details on the [Wiki](https://github.com/Chryscorelab/HardcoreLife/wiki/Config-files)
@@ -26,7 +28,7 @@ This plugin using **Vault** and have been tested with EssentialX
 - [x] Add command for admins to update a player's life count (`\setlives`)
 - [x] Add announcements for when a player is eliminated, or the global life count changes
 - [x] Update `\howmanylives` to be `\lives`
-- [ ] Remove hard-coded world name from config.yml
+- [x] Remove hard-coded world name from config.yml
 - [x] Actually test this to see if it even works (working so far!)
 - [x] Update `\lives` to show lives of another player
 

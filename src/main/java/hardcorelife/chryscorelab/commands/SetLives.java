@@ -22,8 +22,8 @@ public class SetLives implements CommandExecutor {
         // Must be a number greater than 0
 
         // TODO - Handle when a player's life count hits 0, then is increased
-
-        if (!sender.isOp()) {
+        // TODO - Must verify if the permission works
+        if (/*!sender.isOp() || */!sender.hasPermission("hardcorelife.setlives")) {
             sender.sendMessage("You must be an operator to use this command.");
             return true;
         }

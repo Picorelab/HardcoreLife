@@ -34,13 +34,10 @@ public final class Touchy extends JavaPlugin {
         getConfig().options().copyDefaults(true);
         GetLivesConfigFile();
 
-        // TODO - Make this dynamic | This is really a need ?
-        // World world = Bukkit.getWorld("world");
 
         Objects.requireNonNull(getCommand("lives")).setExecutor(new Lives());
         Objects.requireNonNull(getCommand("setlives")).setExecutor(new SetLives());
 
-        // assert world != null;
 
         PluginManager pm = getServer().getPluginManager();
 
