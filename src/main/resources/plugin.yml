@@ -13,6 +13,7 @@ commands:
   setlives:
     description: Set the life count of a player
     usage: \setlives [player] <value>
+    permission: hardcorelife.setlives
 permissions:
   hardcorelife.setlives:
     description: Allow the command /setlives - Set the life count of a player

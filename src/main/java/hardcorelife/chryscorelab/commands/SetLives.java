@@ -23,11 +23,6 @@ public class SetLives implements CommandExecutor {
 
         // TODO - Handle when a player's life count hits 0, then is increased
 
-        if (!sender.hasPermission("hardcorelife.setlives")) {
-            sender.sendMessage("You must be an operator to use this command.");
-            return true;
-        }
-
         if (args.length == 2) {
             // Set another player's life count
             player = Bukkit.getPlayer(args[0]);
