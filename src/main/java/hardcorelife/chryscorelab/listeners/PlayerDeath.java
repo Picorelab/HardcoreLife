@@ -23,16 +23,13 @@ public class PlayerDeath implements Listener {
         Location deathLocation = player.getLocation();
         Server server = Touchy.get().getServer();
 
-
         PlayerLife.removeLife(player);
 
         int remainingLives = PlayerLife.getLives(player);
 
         if (Touchy.get().globalLivesEnabled()) {
-            TextComponent component = Component.text("The server has " +
-            remainingLives + " live(s) remaining.");
+            TextComponent component = Component.text("The server has " + remainingLives + " live(s) remaining.");
             server.broadcast(component);
-
 
             if (remainingLives == 0) {
                 // handle server permadeath
@@ -47,8 +44,6 @@ public class PlayerDeath implements Listener {
             }
 
         } else {
-            // TODO - Change this to only send to the player,
-            // once /lives supports getting life count of other players
             player.sendMessage("You have " + remainingLives + " live(s) remaining.");
 
             if (remainingLives == 0) {
