@@ -20,34 +20,32 @@ On [Curseforge](https://www.curseforge.com/minecraft/bukkit-plugins/hardcorelife
 
 On [Spigotmc](https://www.spigotmc.org/resources/hardcore-life.91375/)
 
+---
 
-***
 ## Commands
 
 `/lives` : Show the numbers of lives you have
-
-`/setlive` : Set the life count of a player (must be OP)
+`/setlive` : Set the life count of a player
 
 More details [here](https://github.com/Chryscorelab/HardcoreLife/wiki/Commands)
 
 ## Config
 
-See the `config.yml` file of the plugin, more details on the [Wiki](https://github.com/Chryscorelab/HardcoreLife/wiki/Config-files)
+See the `config.yml` file of the plugin, more details in the [Wiki](https://github.com/Chryscorelab/HardcoreLife/wiki/%E2%9A%99%EF%B8%8FConfig-files)
 
 ## Dependencies
 
 This plugin using **Vault** and have been tested with EssentialX
 
-## Issues ? Need Help or Suggestions ?
+## Issue? Need help or have suggestions?
 
 You can open an issue [here](https://github.com/Chryscorelab/HardcoreLife/issues) !
 
-
 ## TODO & future plan
 
-You can follow ours plan and our todo list [here](https://github.com/Chryscorelab/HardcoreLife/projects) 
+You can follow ours plan and our todo list [here](https://github.com/Chryscorelab/HardcoreLife/projects).
 
-####     Feel free to suggest & and create Pull requests!
+**Feel free to suggest & and create pull requests!**
 
 ## Licenced under GNU General Public License v3.0
 
