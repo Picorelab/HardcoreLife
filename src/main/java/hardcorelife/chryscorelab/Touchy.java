@@ -1,6 +1,5 @@
 package hardcorelife.chryscorelab;
 
-
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -33,10 +32,8 @@ public final class Touchy extends JavaPlugin {
         getConfig().options().copyDefaults(true);
         GetLivesConfigFile();
 
-
         Objects.requireNonNull(getCommand("lives")).setExecutor(new Lives());
         Objects.requireNonNull(getCommand("setlives")).setExecutor(new SetLives());
-
 
         PluginManager pm = getServer().getPluginManager();
 
