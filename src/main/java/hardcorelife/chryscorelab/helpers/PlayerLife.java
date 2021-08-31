@@ -63,6 +63,11 @@ public class PlayerLife {
         Touchy.get().saveHashmapData(lives);
     }
 
+    public static void clearLivesData() {
+        // Clears all in-memory life data. Will be reloaded from disk
+        lives.clear();
+    }
+
     public static HashMap<UUID, Integer> getLivesMap() {
         return lives;
     }

@@ -14,7 +14,14 @@ commands:
     description: Set the life count of a player
     usage: \setlives [player] <value>
     permission: hardcorelife.setlives
+  resetserver:
+    description: Reset all worlds and life values
+    usage: Deletes all world data and life values! Use '\resetServer true' to confirm.
+    permission: hardcorelife.resetserver
 permissions:
   hardcorelife.setlives:
     description: Allow the command /setlives - Set the life count of a player
+    default: op
+  hardcorelife.resetserver:
+    description: Allow the command /resetserver - Reset all worlds and life values
     default: op
