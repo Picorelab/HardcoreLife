@@ -1,8 +1,14 @@
 package hardcorelife.chryscorelab;
 
+import io.papermc.paper.event.world.WorldGameRuleChangeEvent;
+import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
+import org.bukkit.Server;
+import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.generator.WorldInfo;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -12,6 +18,7 @@ import hardcorelife.chryscorelab.helpers.PlayerLife;
 import hardcorelife.chryscorelab.listeners.PlayerDeath;
 import hardcorelife.chryscorelab.listeners.PlayerJoinServer;
 
+import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -31,6 +38,7 @@ public final class Touchy extends JavaPlugin {
         saveDefaultConfig();
         getConfig().options().copyDefaults(true);
         GetLivesConfigFile();
+        setNaturalRegFalse();
 
         Objects.requireNonNull(getCommand("lives")).setExecutor(new Lives());
         Objects.requireNonNull(getCommand("setlives")).setExecutor(new SetLives());
@@ -39,6 +47,7 @@ public final class Touchy extends JavaPlugin {
 
         pm.registerEvents(new PlayerDeath(), this);
         pm.registerEvents(new PlayerJoinServer(), this);
+
 
     }
 
@@ -116,5 +125,14 @@ public final class Touchy extends JavaPlugin {
             LivesConfig.set(entry.getKey() + ".lives", entry.getValue());
         }
         SetLivesConfig(LivesConfig);
+    }
+
+    private void setNaturalRegFalse(){
+        if(!getConfig().getBoolean("naturalRegeneration", false)){
+            for(int i = 0; i < Touchy.get().getServer().getWorlds().size(); i++){
+                Touchy.get().getServer().getWorlds().get(i).setGameRule(GameRule.NATURAL_REGENERATION, false);
+            }
+            Bukkit.getConsoleSender().sendMessage("[HardcoreLife] The Gamerule NATURAL_REGENERATION have been disabled");
+        }
     }
 }
