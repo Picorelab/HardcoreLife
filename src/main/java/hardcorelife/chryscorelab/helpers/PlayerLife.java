@@ -8,13 +8,8 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class PlayerLife {
-    private final Player player;
 
     private static HashMap<UUID, Integer> lives = new HashMap<>();
-
-    public PlayerLife(Player player) {
-        this.player = player;
-    }
 
     public static void initPlayer(Player player) {
         // Triggers the player data to be loaded from config.yml
