@@ -8,15 +8,22 @@ import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.generator.WorldInfo;
+
+import org.apache.commons.io.FileUtils;
+import org.bukkit.WorldCreator;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import hardcorelife.chryscorelab.commands.Lives;
+import hardcorelife.chryscorelab.commands.ResetServer;
 import hardcorelife.chryscorelab.commands.SetLives;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
 import hardcorelife.chryscorelab.listeners.PlayerDeath;
 import hardcorelife.chryscorelab.listeners.PlayerJoinServer;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
 
 import java.io.Console;
 import java.io.File;
@@ -25,6 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 public final class Touchy extends JavaPlugin {
 
@@ -42,12 +50,12 @@ public final class Touchy extends JavaPlugin {
 
         Objects.requireNonNull(getCommand("lives")).setExecutor(new Lives());
         Objects.requireNonNull(getCommand("setlives")).setExecutor(new SetLives());
+        Objects.requireNonNull(getCommand("resetserver")).setExecutor(new ResetServer());
 
         PluginManager pm = getServer().getPluginManager();
 
         pm.registerEvents(new PlayerDeath(), this);
         pm.registerEvents(new PlayerJoinServer(), this);
-
 
     }
 
@@ -60,6 +68,49 @@ public final class Touchy extends JavaPlugin {
 
     public static Touchy get() {
         return instance;
+    }
+
+    public void resetServer() {
+        // Deletes all worlds on the server and resets life counts
+        Logger logger = getServer().getLogger();
+
+        // Kick all online players
+        TextComponent message = Component.text("The server is resetting. Please rejoin.");
+        for (Player p : getServer().getOnlinePlayers()) {
+            p.kick(message);
+        }
+
+        for (World world : getServer().getWorlds()) {
+            String worldName = world.getName();
+            logger.info(world.getName());
+            WorldCreator newWorld = new WorldCreator(worldName).copy(world);
+
+            world.setKeepSpawnInMemory(false);
+
+            // Unload world, don't save
+            // TODO - This always fails to unload the main world, even if the server has
+            // just started and no one has joined.
+            Boolean unloadSuccessful = getServer().unloadWorld(world, true);
+
+            if (!unloadSuccessful) {
+                logger.severe("Failed to unload world: " + worldName);
+            } else {
+                // Delete the world folder
+                try {
+                    FileUtils.deleteDirectory(world.getWorldFolder());
+                } catch (Exception e) {
+                    logger.severe("Failed to delete world: " + worldName);
+                    logger.severe(e.getMessage());
+                }
+            }
+
+            newWorld.createWorld(); // Re-generate world
+        }
+
+        // Delete existing lives.yml
+        GetLivesConfigFile().delete();
+        // Clear playerlife cache
+        PlayerLife.clearLivesData();
     }
 
     private FileConfiguration GetLivesConfig() {
@@ -127,12 +178,13 @@ public final class Touchy extends JavaPlugin {
         SetLivesConfig(LivesConfig);
     }
 
-    private void setNaturalRegFalse(){
-        if(!getConfig().getBoolean("naturalRegeneration", false)){
-            for(int i = 0; i < Touchy.get().getServer().getWorlds().size(); i++){
+    private void setNaturalRegFalse() {
+        if (!getConfig().getBoolean("naturalRegeneration", false)) {
+            for (int i = 0; i < Touchy.get().getServer().getWorlds().size(); i++) {
                 Touchy.get().getServer().getWorlds().get(i).setGameRule(GameRule.NATURAL_REGENERATION, false);
             }
-            Bukkit.getConsoleSender().sendMessage("[HardcoreLife] The Gamerule NATURAL_REGENERATION have been disabled");
+            Bukkit.getConsoleSender()
+                    .sendMessage("[HardcoreLife] The Gamerule NATURAL_REGENERATION have been disabled");
         }
     }
 }
