@@ -1,9 +1,5 @@
 package hardcorelife.chryscorelab;
 
-import io.papermc.paper.event.world.WorldGameRuleChangeEvent;
-import org.bukkit.Bukkit;
-import org.bukkit.GameRule;
-import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -20,6 +16,7 @@ import hardcorelife.chryscorelab.commands.SetLives;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
 import hardcorelife.chryscorelab.listeners.PlayerDeath;
 import hardcorelife.chryscorelab.listeners.PlayerJoinServer;
+import hardcorelife.chryscorelab.listeners.WorldLoad;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 
@@ -44,7 +41,6 @@ public final class Touchy extends JavaPlugin {
         saveDefaultConfig();
         getConfig().options().copyDefaults(true);
         GetLivesConfigFile();
-        setNaturalRegFalse();
 
         Objects.requireNonNull(getCommand("lives")).setExecutor(new Lives());
         Objects.requireNonNull(getCommand("setlives")).setExecutor(new SetLives());
@@ -54,6 +50,7 @@ public final class Touchy extends JavaPlugin {
 
         pm.registerEvents(new PlayerDeath(), this);
         pm.registerEvents(new PlayerJoinServer(), this);
+        pm.registerEvents(new WorldLoad(), this);
 
     }
 
@@ -173,13 +170,8 @@ public final class Touchy extends JavaPlugin {
         SetLivesConfig(LivesConfig);
     }
 
-    private void setNaturalRegFalse() {
-        if (!getConfig().getBoolean("natural_regeneration", false)) {
-            for (int i = 0; i < Touchy.get().getServer().getWorlds().size(); i++) {
-                Touchy.get().getServer().getWorlds().get(i).setGameRule(GameRule.NATURAL_REGENERATION, false);
-            }
-            Bukkit.getConsoleSender()
-                    .sendMessage("[HardcoreLife] The Gamerule NATURAL_REGENERATION have been disabled");
-        }
+    public boolean naturalRegEnabled() {
+        // Returns the value of natural_regeneration from config.yml
+        return getConfig().getBoolean("natural_regeneration", false);
     }
 }
