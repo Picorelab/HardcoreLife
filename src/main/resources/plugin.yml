@@ -2,7 +2,7 @@ name: Hardcorelife
 version: ${project.version}
 main: hardcorelife.chryscorelab.Touchy
 api-version: 1.16
-load: POSTWORLD
+load: STARTUP
 authors: [DaFray31, drewburr]
 description: Hardcorelife
 softdepend: [Vault]

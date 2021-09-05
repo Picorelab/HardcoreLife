@@ -9,10 +9,8 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.generator.WorldInfo;
 
 import org.apache.commons.io.FileUtils;
-import org.bukkit.WorldCreator;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -25,7 +23,6 @@ import hardcorelife.chryscorelab.listeners.PlayerJoinServer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 
-import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -37,6 +34,7 @@ import java.util.logging.Logger;
 public final class Touchy extends JavaPlugin {
 
     private static Touchy instance;
+    private static boolean reset_on_unload = false;
 
     @Override
     public void onEnable() {
@@ -63,6 +61,9 @@ public final class Touchy extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
         PlayerLife.saveLivesData();
+        if (reset_on_unload) {
+            deleteWorldData();
+        }
         instance = null;
     }
 
@@ -80,37 +81,31 @@ public final class Touchy extends JavaPlugin {
             p.kick(message);
         }
 
-        for (World world : getServer().getWorlds()) {
-            String worldName = world.getName();
-            logger.info(world.getName());
-            WorldCreator newWorld = new WorldCreator(worldName).copy(world);
-
-            world.setKeepSpawnInMemory(false);
-
-            // Unload world, don't save
-            // TODO - This always fails to unload the main world, even if the server has
-            // just started and no one has joined.
-            Boolean unloadSuccessful = getServer().unloadWorld(world, true);
-
-            if (!unloadSuccessful) {
-                logger.severe("Failed to unload world: " + worldName);
-            } else {
-                // Delete the world folder
-                try {
-                    FileUtils.deleteDirectory(world.getWorldFolder());
-                } catch (Exception e) {
-                    logger.severe("Failed to delete world: " + worldName);
-                    logger.severe(e.getMessage());
-                }
-            }
-
-            newWorld.createWorld(); // Re-generate world
-        }
-
         // Delete existing lives.yml
         GetLivesConfigFile().delete();
         // Clear playerlife cache
         PlayerLife.clearLivesData();
+
+        logger.info("Restarting the server..");
+        reset_on_unload = true;
+        getServer().spigot().restart();
+    }
+
+    private void deleteWorldData() {
+        Logger logger = getServer().getLogger();
+        logger.info("Deleting all world data");
+
+        for (World world : Touchy.get().getServer().getWorlds()) {
+            String worldName = world.getName();
+            logger.info("Deleting: " + world.getName());
+
+            try {
+                FileUtils.deleteDirectory(world.getWorldFolder());
+            } catch (Exception e) {
+                logger.severe("Failed to delete world: " + worldName);
+                logger.severe(e.getMessage());
+            }
+        }
     }
 
     private FileConfiguration GetLivesConfig() {
