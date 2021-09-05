@@ -1,5 +1,4 @@
-
 starting_lives: 3
-global_lives: True # True : Players will share lives with the server | False : Players will have their own lives
-naturalRegeneration: true #false : the gamerule is disabled. This should be false, if you want the hardcore mode.
+global_lives: true # true : Players will share lives with the server | False : Players will have their own lives
+natural_regeneration: true # false : the gamerule is disabled. This should be false, if you want the hardcore mode.
 language: en_EN #English by Default

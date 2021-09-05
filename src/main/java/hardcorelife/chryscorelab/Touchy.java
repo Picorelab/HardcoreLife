@@ -174,7 +174,7 @@ public final class Touchy extends JavaPlugin {
     }
 
     private void setNaturalRegFalse() {
-        if (!getConfig().getBoolean("naturalRegeneration", false)) {
+        if (!getConfig().getBoolean("natural_regeneration", false)) {
             for (int i = 0; i < Touchy.get().getServer().getWorlds().size(); i++) {
                 Touchy.get().getServer().getWorlds().get(i).setGameRule(GameRule.NATURAL_REGENERATION, false);
             }
