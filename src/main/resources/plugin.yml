@@ -5,7 +5,7 @@ api-version: 1.16
 load: STARTUP
 authors: [DaFray31, drewburr]
 description: Hardcorelife
-softdepend: [Vault]
+# softdepend: [Vault]  # Not actively used. Needed when implementing a shop
 commands:
   lives:
     description: Show a player's current life count
