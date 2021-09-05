@@ -16,7 +16,7 @@ commands:
     permission: hardcorelife.setlives
   resetserver:
     description: Reset all worlds and life values
-    usage: Deletes all world data and life values! Use '\resetServer true' to confirm.
+    usage: Deletes all world data and life values! Use '\resetserver true' to confirm.
     permission: hardcorelife.resetserver
 permissions:
   hardcorelife.setlives:
