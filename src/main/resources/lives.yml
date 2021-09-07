@@ -1,3 +1,2 @@
-#UUID: "String"
-  #pseudo: "pseudo"
-  #lives: 2
+# UUID:
+#  lives: int

@@ -1,0 +1,21 @@
+remain: "vie(s) restante(s)."
+server_has: "Le serveur a"
+player_have: "Vous avez"
+welcome: "Bon retour à bord"
+out_lives: "a épuisé toutes ses vies."
+must_op: "Vous devez avoir la permission pour utiliser cette commande."
+lives_left: "vie(s) restante(s)."
+has: "a"
+lifechange: "a changé votre vie, vous avez maintenant : "
+
+
+error:
+  uknown: "ERROR : Unknown player"
+  specified: "ERROR: Player and value must be specified."
+  value: "Invalid lives value:"
+
+#MUST BE TESTED
+#set: "Régler"
+#life_add: "'s life count to:"
+
+test: "'La vie de' + player.getName() + ' a été augmenté à :'"
