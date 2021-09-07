@@ -8,7 +8,6 @@ lives_left: "live(s) left."
 has: "has"
 lifechange: "has changed your life count to:"
 
-
 error:
   uknown: "ERROR : Unknown player"
   specified: "ERROR: Player and value must be specified."
@@ -17,5 +16,4 @@ error:
 #MUST BE TESTED
 set: "Set"
 life_add: "'s life count to:"
-
 # -> msut_be_test: "'Set ' + player.getName() + "'s life count to: " + numArg"\"

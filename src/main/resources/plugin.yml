@@ -9,14 +9,14 @@ description: Hardcorelife
 commands:
   lives:
     description: Show a player's current life count
-    usage: \lives [player]
+    usage: /lives [player]
   setlives:
     description: Set the life count of a player
-    usage: \setlives [player] <value>
+    usage: /setlives [player] <value>
     permission: hardcorelife.setlives
   resetserver:
     description: Reset all worlds and life values
-    usage: Deletes all world data and life values! Use '\resetserver true' to confirm.
+    usage: Deletes all world data and life values! Use '/resetserver true' to confirm.
     permission: hardcorelife.resetserver
 permissions:
   hardcorelife.setlives:

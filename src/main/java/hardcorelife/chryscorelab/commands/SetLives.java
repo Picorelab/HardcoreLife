@@ -18,7 +18,7 @@ public class SetLives implements CommandExecutor {
         String numArg;
         int newCount;
 
-        // Usage: \setlives [player] <value>
+        // Usage: /setlives [player] <value>
         // Must be a number greater than 0
 
         // TODO - Handle when a player's life count hits 0, then is increased
