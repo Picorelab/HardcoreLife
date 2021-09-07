@@ -1,12 +1,12 @@
 package hardcorelife.chryscorelab.commands;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import hardcorelife.chryscorelab.Touchy;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
 
 public class Lives implements CommandExecutor {
@@ -15,7 +15,7 @@ public class Lives implements CommandExecutor {
             @NotNull String[] args) {
 
         if (args.length > 0) {
-            Player player = Bukkit.getPlayer(args[0]);
+            Player player = Touchy.get().getServer().getPlayer(args[0]);
 
             if (player instanceof Player) {
                 sender.sendMessage(player.getName() + " has " + PlayerLife.getLives(player) + " live(s) left.");

@@ -2,8 +2,8 @@ package hardcorelife.chryscorelab.listeners;
 
 import hardcorelife.chryscorelab.Touchy;
 
-import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
+import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,10 +17,11 @@ public class WorldLoad implements Listener {
 
         World world = event.getWorld();
         Boolean regenEnabledConfig = Touchy.get().naturalRegEnabled();
+        Server server = Touchy.get().getServer();
 
         if (world.getGameRuleValue(GameRule.NATURAL_REGENERATION) != regenEnabledConfig) {
             world.setGameRule(GameRule.NATURAL_REGENERATION, regenEnabledConfig);
-            Bukkit.getConsoleSender().sendMessage("[Hardcorelife] Set NATURAL_REGENERATION to "
+            server.getConsoleSender().sendMessage("[Hardcorelife] Set NATURAL_REGENERATION to "
                     + regenEnabledConfig.toString() + " for world: " + world.getName());
         }
     }

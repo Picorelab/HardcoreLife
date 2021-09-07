@@ -2,7 +2,6 @@ package hardcorelife.chryscorelab.listeners;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Server;
@@ -36,10 +35,10 @@ public class PlayerDeath implements Listener {
 
             if (remainingLives == 0) {
                 // Handle server permadeath
-                Bukkit.setDefaultGameMode(GameMode.SPECTATOR);
+                server.setDefaultGameMode(GameMode.SPECTATOR);
 
                 // Change everyone's gamemode to spectator
-                for (Player p : Bukkit.getOnlinePlayers()) {
+                for (Player p : server.getOnlinePlayers()) {
                     p.setGameMode(GameMode.SPECTATOR);
                 }
 
@@ -78,7 +77,7 @@ public class PlayerDeath implements Listener {
     private static void respawnPlayer(Player player) {
         // Handle respawning a new player
         // This may be necessary if hardcore == True
-        player.setGameMode(Bukkit.getDefaultGameMode());
+        player.setGameMode(Touchy.get().getServer().getDefaultGameMode());
     }
 
 }
