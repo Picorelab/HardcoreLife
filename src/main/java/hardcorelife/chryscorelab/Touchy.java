@@ -1,5 +1,6 @@
 package hardcorelife.chryscorelab;
 
+import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -32,10 +33,12 @@ public final class Touchy extends JavaPlugin {
 
     private static Touchy instance;
     private static boolean reset_on_unload = false;
+    private static Server server;
 
     @Override
     public void onEnable() {
         instance = this;
+        server = this.getServer();
 
         // Plugin startup logic
         saveDefaultConfig();
@@ -92,7 +95,7 @@ public final class Touchy extends JavaPlugin {
         Logger logger = getServer().getLogger();
         logger.info("Deleting all world data");
 
-        for (World world : Touchy.get().getServer().getWorlds()) {
+        for (World world : server.getWorlds()) {
             String worldName = world.getName();
             logger.info("Deleting: " + world.getName());
 

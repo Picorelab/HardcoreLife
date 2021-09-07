@@ -1,5 +1,6 @@
 package hardcorelife.chryscorelab.commands;
 
+import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -10,6 +11,10 @@ import hardcorelife.chryscorelab.Touchy;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
 
 public class SetLives implements CommandExecutor {
+
+    private static Touchy touchy = Touchy.get();
+    private static Server server = touchy.getServer();
+
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
             @NotNull String[] args) {
@@ -25,7 +30,7 @@ public class SetLives implements CommandExecutor {
 
         if (args.length == 2) {
             // Set another player's life count
-            player = Touchy.get().getServer().getPlayer(args[0]);
+            player = server.getPlayer(args[0]);
             if (!(player instanceof Player)) {
                 sender.sendMessage("ERROR: Unknown player '" + args[0] + "'");
                 return false;

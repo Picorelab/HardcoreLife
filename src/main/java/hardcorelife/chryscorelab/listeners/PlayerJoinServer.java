@@ -13,6 +13,8 @@ import java.io.IOException;
 
 public class PlayerJoinServer implements Listener {
 
+    private static Touchy touchy = Touchy.get();
+
     @EventHandler
     public void onJoin(PlayerJoinEvent event) throws IOException {
 
@@ -29,7 +31,7 @@ public class PlayerJoinServer implements Listener {
 
         // TODO - Show messages about the number of lives remaining server/player,
         // sending to the players (even more, show a history of past events)
-        if (Touchy.get().globalLivesEnabled()) {
+        if (touchy.globalLivesEnabled()) {
             player.sendMessage(" Welcome back aboard " + player.getName() + "! The server has "
                     + PlayerLife.getLives(player) + " live(s) remaining");
         } else {

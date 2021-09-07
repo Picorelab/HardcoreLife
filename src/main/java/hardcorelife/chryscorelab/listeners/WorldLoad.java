@@ -12,12 +12,14 @@ import java.io.IOException;
 
 public class WorldLoad implements Listener {
 
+    private static Touchy touchy = Touchy.get();
+    private static Server server = touchy.getServer();
+
     @EventHandler
     public void onWorldLoad(WorldLoadEvent event) throws IOException {
 
         World world = event.getWorld();
-        Boolean regenEnabledConfig = Touchy.get().naturalRegEnabled();
-        Server server = Touchy.get().getServer();
+        Boolean regenEnabledConfig = touchy.naturalRegEnabled();
 
         if (world.getGameRuleValue(GameRule.NATURAL_REGENERATION) != regenEnabledConfig) {
             world.setGameRule(GameRule.NATURAL_REGENERATION, regenEnabledConfig);

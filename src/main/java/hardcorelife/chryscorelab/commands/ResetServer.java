@@ -8,6 +8,9 @@ import org.jetbrains.annotations.NotNull;
 import hardcorelife.chryscorelab.Touchy;
 
 public class ResetServer implements CommandExecutor {
+
+    private static Touchy touchy = Touchy.get();
+
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
             @NotNull String[] args) {
@@ -20,7 +23,7 @@ public class ResetServer implements CommandExecutor {
         }
 
         if (confirm) {
-            Touchy.get().resetServer();
+            touchy.resetServer();
         } else {
             return false;
         }

@@ -18,18 +18,20 @@ import hardcorelife.chryscorelab.helpers.PlayerLife;
 
 public class PlayerDeath implements Listener {
 
+    private static Touchy touchy = Touchy.get();
+    private static Server server = touchy.getServer();
+
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
 
         Player player = event.getEntity();
         Location deathLocation = player.getLocation();
-        Server server = Touchy.get().getServer();
 
         PlayerLife.removeLife(player);
 
         int remainingLives = PlayerLife.getLives(player);
 
-        if (Touchy.get().globalLivesEnabled()) {
+        if (touchy.globalLivesEnabled()) {
             TextComponent component = Component.text("The server has " + remainingLives + " live(s) remaining.");
             server.broadcast(component);
 
@@ -43,7 +45,7 @@ public class PlayerDeath implements Listener {
                 }
 
                 // Make resetserver permission global
-                PluginManager pm = Touchy.get().getServer().getPluginManager();
+                PluginManager pm = server.getPluginManager();
                 Permission resetserver = pm.getPermission("hardcorelife.resetserver");
                 resetserver.setDefault(PermissionDefault.TRUE);
 
@@ -77,7 +79,7 @@ public class PlayerDeath implements Listener {
     private static void respawnPlayer(Player player) {
         // Handle respawning a new player
         // This may be necessary if hardcore == True
-        player.setGameMode(Touchy.get().getServer().getDefaultGameMode());
+        player.setGameMode(server.getDefaultGameMode());
     }
 
 }
