@@ -34,7 +34,7 @@ More details [here](https://github.com/Chryscorelab/HardcoreLife/wiki/Commands)
 
 ## Config
 
-See the `config.yml` file of the plugin, more details in the [Wiki](https://github.com/Chryscorelab/HardcoreLife/wiki/%E2%9A%99%EF%B8%8FConfig-files)
+See the `config.yml` file of the plugin, more details in the [Wiki](https://github.com/Chryscorelab/HardcoreLife/wiki/Config-files)
 
 ## Dependencies
 
