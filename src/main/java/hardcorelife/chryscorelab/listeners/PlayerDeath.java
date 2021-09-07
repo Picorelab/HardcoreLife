@@ -10,6 +10,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
+import org.bukkit.plugin.PluginManager;
 
 import hardcorelife.chryscorelab.Touchy;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
@@ -32,13 +35,23 @@ public class PlayerDeath implements Listener {
             server.broadcast(component);
 
             if (remainingLives == 0) {
-                // handle server permadeath
+                // Handle server permadeath
                 Bukkit.setDefaultGameMode(GameMode.SPECTATOR);
 
                 // Change everyone's gamemode to spectator
                 for (Player p : Bukkit.getOnlinePlayers()) {
                     p.setGameMode(GameMode.SPECTATOR);
                 }
+
+                // Make resetserver permission global
+                PluginManager pm = Touchy.get().getServer().getPluginManager();
+                Permission resetserver = pm.getPermission("hardcorelife.resetserver");
+                resetserver.setDefault(PermissionDefault.TRUE);
+
+                TextComponent reset_comp = Component
+                        .text("Game over! When ready, use the '/resetserver' command to restart.");
+                server.broadcast(reset_comp);
+
             } else {
                 respawnPlayer(player);
             }
