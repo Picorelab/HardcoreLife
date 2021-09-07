@@ -25,7 +25,9 @@ On [Spigotmc](https://www.spigotmc.org/resources/hardcore-life.91375/)
 ## Commands
 
 `/lives` : Show the numbers of lives you have
+
 `/setlives` : Set the life count of a player
+
 `/resetserver` : Delete all worlds and reset the life count. When global lives is enabled and the life count hits 0, this command becomes gloally accessible.
 
 More details [here](https://github.com/Chryscorelab/HardcoreLife/wiki/Commands)
