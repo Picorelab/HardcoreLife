@@ -38,7 +38,7 @@ See the `config.yml` file of the plugin, more details in the [Wiki](https://gith
 
 ## Dependencies
 
-This plugin using **Vault** and have been tested with EssentialX
+There are no active dependenties at this time.
 
 ## Issue? Need help or have suggestions?
 
