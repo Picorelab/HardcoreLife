@@ -47,7 +47,7 @@ public final class Touchy extends JavaPlugin {
         getConfig().options().copyDefaults(true);
 
         // Initialize config files
-        livesConfig = GetLivesConfig();
+        livesConfig = getLivesConfig();
         config = getConfig();
 
         Objects.requireNonNull(getCommand("lives")).setExecutor(new Lives());
@@ -87,7 +87,7 @@ public final class Touchy extends JavaPlugin {
         }
 
         // Delete existing lives.yml
-        GetLivesConfigFile().delete();
+        getLivesConfigFile().delete();
         // Clear playerlife cache
         PlayerLife.clearLivesData();
 
@@ -113,8 +113,8 @@ public final class Touchy extends JavaPlugin {
         }
     }
 
-    private FileConfiguration GetLivesConfig() {
-        File LivesConfigFile = GetLivesConfigFile();
+    private FileConfiguration getLivesConfig() {
+        File LivesConfigFile = getLivesConfigFile();
         FileConfiguration LivesConfig = new YamlConfiguration();
         try {
             LivesConfig.load(LivesConfigFile);
@@ -124,8 +124,8 @@ public final class Touchy extends JavaPlugin {
         return LivesConfig;
     }
 
-    private void SetLivesConfig(FileConfiguration LivesConfig) {
-        File LivesConfigFile = GetLivesConfigFile();
+    private void setLivesConfig(FileConfiguration LivesConfig) {
+        File LivesConfigFile = getLivesConfigFile();
         try {
             LivesConfig.save(LivesConfigFile);
         } catch (IOException e) {
@@ -133,7 +133,7 @@ public final class Touchy extends JavaPlugin {
         }
     }
 
-    private File GetLivesConfigFile() {
+    private File getLivesConfigFile() {
         // Ensures lives.yml exists, and returns the file object
         File LivesConfigFile = new File(getDataFolder(), "lives.yml");
         if (!LivesConfigFile.exists()) {
@@ -153,6 +153,15 @@ public final class Touchy extends JavaPlugin {
         return config.getBoolean("global_lives");
     }
 
+    public boolean deathMovementEnabled() {
+        // Returns the death_movement value from config.yml
+        if (config.isSet("death_movement")) {
+            return config.getBoolean("death_movement");
+        } else {
+            return globalLivesEnabled();
+        }
+    }
+
     public int getPlayerLivesConfig(UUID uuid) {
         // Gets the number of lives a player has from config.yml
         // If no data is set, the default is returned
@@ -162,7 +171,7 @@ public final class Touchy extends JavaPlugin {
     public void savePlayerLifeConfig(UUID uuid, int lives) {
         // Update the life value for a single player, in lives.yml
         livesConfig.set(uuid + ".lives", lives);
-        SetLivesConfig(livesConfig);
+        setLivesConfig(livesConfig);
     }
 
     public void saveHashmapData(HashMap<UUID, Integer> lives) {
@@ -170,7 +179,7 @@ public final class Touchy extends JavaPlugin {
         for (Map.Entry<UUID, Integer> entry : lives.entrySet()) {
             livesConfig.set(entry.getKey() + ".lives", entry.getValue());
         }
-        SetLivesConfig(livesConfig);
+        setLivesConfig(livesConfig);
     }
 
     public boolean naturalRegEnabled() {
