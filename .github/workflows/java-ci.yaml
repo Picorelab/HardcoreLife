@@ -25,9 +25,9 @@ jobs:
           mkdir staging && cp target/*.jar staging
           rm staging/original-*.jar
 
-      - name: Set the build's version name
+      - name: Set the build version name
         id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
 
       - name: Upload build artifact(s)
         uses: actions/upload-artifact@v2
