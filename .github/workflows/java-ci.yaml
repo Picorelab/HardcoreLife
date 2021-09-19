@@ -1,0 +1,41 @@
+name: Java CI
+
+on:
+  push:
+    # Build changes to all branches
+    branches: ["*"]
+    # Build semver tags
+    tags: ["*.*.*"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: "16"
+          distribution: "adopt"
+          cache: maven # Dramatically decreases build times
+
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots verify
+
+      - name: Prepare .jar file(s) for artifacting
+        run: |
+          mkdir staging && cp target/*.jar staging
+          rm staging/original-*.jar
+
+      - name: Set the build version name
+        id: get_version
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+
+      - name: Upload build artifact(s)
+        uses: actions/upload-artifact@v2
+        with:
+          name: hardcorelife-${{ steps.get_version.outputs.VERSION }}
+          path: staging
