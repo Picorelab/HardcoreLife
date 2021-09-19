@@ -1,6 +1,11 @@
 name: Java CI
 
-on: [push]
+on:
+  push:
+    # Build changes to all branches
+    branches: ["*"]
+    # Build semver tags
+    tags: ["*.*.*"]
 
 jobs:
   build:
