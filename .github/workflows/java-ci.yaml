@@ -21,7 +21,9 @@ jobs:
         run: mvn --batch-mode --update-snapshots verify
 
       - name: Prepare .jar file(s) for artifacting
-        run: mkdir staging && cp target/*.jar staging
+        run:
+          - mkdir staging && cp target/*.jar staging
+          - rm staging/original-*.jar
 
       - name: Upload build artifact(s)
         uses: actions/upload-artifact@v2
