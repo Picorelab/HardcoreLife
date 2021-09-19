@@ -33,8 +33,6 @@ public class SetLives implements CommandExecutor {
         // Usage: /setlives [player] <value>
         // Must be a number greater than 0
 
-        // TODO - Handle when a player's life count hits 0, then is increased
-
         if (args.length == 2) {
             // Set another player's life count
             player = server.getPlayer(args[0]);
@@ -78,7 +76,7 @@ public class SetLives implements CommandExecutor {
 
                 // Revive all players
                 for (Player p : server.getOnlinePlayers()) {
-                    revivePlayer(p);
+                    PlayerLife.revivePlayer(p);
                 }
 
                 // Restrict resetserver permission
@@ -91,24 +89,11 @@ public class SetLives implements CommandExecutor {
                 server.broadcast(reset_comp);
             } else {
                 // Revive the player without altering life count
-                revivePlayer(player);
+                PlayerLife.revivePlayer(player);
             }
         }
 
         return true;
-    }
-
-    public void revivePlayer(Player player) {
-        // Force-respawn a player without altering their life count
-        // Mainly used when reviving a player who experiences permadeath
-        player.setGameMode(GameMode.SURVIVAL);
-
-        PlayerLife.addLife(player);
-        player.setHealth(0);
-
-        // Re-enable movement
-        player.setWalkSpeed(0.2f);
-        player.setFlySpeed(0.1f);
     }
 
 }

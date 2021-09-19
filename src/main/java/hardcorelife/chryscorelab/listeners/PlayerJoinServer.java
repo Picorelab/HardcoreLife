@@ -1,6 +1,7 @@
 package hardcorelife.chryscorelab.listeners;
 
 import hardcorelife.chryscorelab.Touchy;
+
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,7 +31,7 @@ public class PlayerJoinServer implements Listener {
         } else {
             // Handle when a player's life count was increased while they were away
             if (player.getGameMode() == GameMode.SPECTATOR) {
-                player.setGameMode(GameMode.SURVIVAL);
+                PlayerLife.revivePlayer(player);
             }
         }
 
