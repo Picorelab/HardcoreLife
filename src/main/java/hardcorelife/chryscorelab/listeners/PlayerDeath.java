@@ -65,14 +65,18 @@ public class PlayerDeath implements Listener {
                 TextComponent component = Component.text(player.getName() + " has run out of lives.");
                 server.broadcast(component);
                 player.setGameMode(GameMode.SPECTATOR);
-                // Prevent movement on death
-                player.setFlySpeed(0);
-                player.setWalkSpeed(0);
+                // Revive the player. Allows teleport to work
+                player.setHealth(20);
                 player.teleport(deathLocation);
 
             } else {
                 respawnPlayer(player);
             }
+        }
+        // Prevent movement on death
+        if (!touchy.deathMovementEnabled()) {
+            player.setFlySpeed(0);
+            player.setWalkSpeed(0);
         }
     }
 

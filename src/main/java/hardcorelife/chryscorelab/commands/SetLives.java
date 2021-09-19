@@ -76,9 +76,9 @@ public class SetLives implements CommandExecutor {
                 // Handle server life refresh
                 server.setDefaultGameMode(GameMode.SURVIVAL);
 
-                // Reset everyone's gamemode
+                // Revive all players
                 for (Player p : server.getOnlinePlayers()) {
-                    p.setGameMode(GameMode.SURVIVAL);
+                    revivePlayer(p);
                 }
 
                 // Restrict resetserver permission
@@ -90,15 +90,25 @@ public class SetLives implements CommandExecutor {
                         .text("The server's life count has been increased to: " + String.valueOf(newCount));
                 server.broadcast(reset_comp);
             } else {
-                // Handle player life refresh
-                player.setGameMode(GameMode.SURVIVAL);
-                player.setWalkSpeed(0.2f);
-                player.setFlySpeed(0.1f);
-                // It might be worth tp-ing the player to the world[0] spawn
+                // Revive the player without altering life count
+                revivePlayer(player);
             }
         }
 
         return true;
+    }
+
+    public void revivePlayer(Player player) {
+        // Force-respawn a player without altering their life count
+        // Mainly used when reviving a player who experiences permadeath
+        player.setGameMode(GameMode.SURVIVAL);
+
+        PlayerLife.addLife(player);
+        player.setHealth(0);
+
+        // Re-enable movement
+        player.setWalkSpeed(0.2f);
+        player.setFlySpeed(0.1f);
     }
 
 }
