@@ -81,8 +81,8 @@ public class PlayerDeath implements Listener {
     }
 
     private static void respawnPlayer(Player player) {
-        // Handle respawning a new player
-        // This may be necessary if hardcore == True
+        // Handle respawning a new player, in a non-permadeath fashion
+        // TODO: This does not work when hardcore = true
         player.setGameMode(server.getDefaultGameMode());
     }
 
