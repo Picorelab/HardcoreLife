@@ -1,4 +1,5 @@
 starting_lives: 3
 global_lives: true # true : Players will share lives with the server | False : Players will have their own lives
-natural_regeneration: true # false : the gamerule is disabled. This should be false, if you want the hardcore mode.
+#death_movement: true # Allow movement after hitting permadeath. If unset, defaults to the value of global_lives
+natural_regeneration: true # false : the gamerule is disabled. This should be false, if you want the hardcore mode
 language: en_EN # English by Default

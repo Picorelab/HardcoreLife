@@ -1,6 +1,7 @@
 package hardcorelife.chryscorelab.listeners;
 
 import hardcorelife.chryscorelab.Touchy;
+
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,10 +28,14 @@ public class PlayerJoinServer implements Listener {
 
         if (PlayerLife.getLives(player) == 0) {
             player.setGameMode(GameMode.SPECTATOR);
+        } else {
+            // Handle when a player's life count was increased while they were away
+            if (player.getGameMode() == GameMode.SPECTATOR) {
+                PlayerLife.revivePlayer(player);
+            }
         }
 
-        // TODO - Show messages about the number of lives remaining server/player,
-        // sending to the players (even more, show a history of past events)
+        // TODO - Show a history of past death events
         if (touchy.globalLivesEnabled()) {
             player.sendMessage(" Welcome back aboard " + player.getName() + "! The server has "
                     + PlayerLife.getLives(player) + " live(s) remaining");

@@ -34,6 +34,8 @@ public final class Touchy extends JavaPlugin {
     private static Touchy instance;
     private static boolean reset_on_unload = false;
     private static Server server;
+    private static FileConfiguration config;
+    private static FileConfiguration livesConfig;
 
     @Override
     public void onEnable() {
@@ -43,7 +45,10 @@ public final class Touchy extends JavaPlugin {
         // Plugin startup logic
         saveDefaultConfig();
         getConfig().options().copyDefaults(true);
-        GetLivesConfigFile();
+
+        // Initialize config files
+        livesConfig = getLivesConfig();
+        config = getConfig();
 
         Objects.requireNonNull(getCommand("lives")).setExecutor(new Lives());
         Objects.requireNonNull(getCommand("setlives")).setExecutor(new SetLives());
@@ -82,7 +87,7 @@ public final class Touchy extends JavaPlugin {
         }
 
         // Delete existing lives.yml
-        GetLivesConfigFile().delete();
+        getLivesConfigFile().delete();
         // Clear playerlife cache
         PlayerLife.clearLivesData();
 
@@ -108,8 +113,8 @@ public final class Touchy extends JavaPlugin {
         }
     }
 
-    private FileConfiguration GetLivesConfig() {
-        File LivesConfigFile = GetLivesConfigFile();
+    private FileConfiguration getLivesConfig() {
+        File LivesConfigFile = getLivesConfigFile();
         FileConfiguration LivesConfig = new YamlConfiguration();
         try {
             LivesConfig.load(LivesConfigFile);
@@ -119,8 +124,8 @@ public final class Touchy extends JavaPlugin {
         return LivesConfig;
     }
 
-    private void SetLivesConfig(FileConfiguration LivesConfig) {
-        File LivesConfigFile = GetLivesConfigFile();
+    private void setLivesConfig(FileConfiguration LivesConfig) {
+        File LivesConfigFile = getLivesConfigFile();
         try {
             LivesConfig.save(LivesConfigFile);
         } catch (IOException e) {
@@ -128,7 +133,7 @@ public final class Touchy extends JavaPlugin {
         }
     }
 
-    private File GetLivesConfigFile() {
+    private File getLivesConfigFile() {
         // Ensures lives.yml exists, and returns the file object
         File LivesConfigFile = new File(getDataFolder(), "lives.yml");
         if (!LivesConfigFile.exists()) {
@@ -140,37 +145,41 @@ public final class Touchy extends JavaPlugin {
 
     public int getDefaultLives() {
         // Returns the starting_lives value from config.yml
-        FileConfiguration defaultLivesConfig = getConfig();
-        return defaultLivesConfig.getInt("starting_lives");
+        return config.getInt("starting_lives");
     }
 
     public boolean globalLivesEnabled() {
         // Returns the global_lives value from config.yml
-        FileConfiguration defaultLivesConfig = getConfig();
-        return defaultLivesConfig.getBoolean("global_lives");
+        return config.getBoolean("global_lives");
+    }
+
+    public boolean deathMovementEnabled() {
+        // Returns the death_movement value from config.yml
+        if (config.isSet("death_movement")) {
+            return config.getBoolean("death_movement");
+        } else {
+            return globalLivesEnabled();
+        }
     }
 
     public int getPlayerLivesConfig(UUID uuid) {
         // Gets the number of lives a player has from config.yml
         // If no data is set, the default is returned
-        FileConfiguration livesConfig = GetLivesConfig();
         return livesConfig.getInt(uuid + ".lives", getDefaultLives());
     }
 
     public void savePlayerLifeConfig(UUID uuid, int lives) {
         // Update the life value for a single player, in lives.yml
-        FileConfiguration LivesConfig = GetLivesConfig();
-        LivesConfig.set(uuid + ".lives", lives);
-        SetLivesConfig(LivesConfig);
+        livesConfig.set(uuid + ".lives", lives);
+        setLivesConfig(livesConfig);
     }
 
     public void saveHashmapData(HashMap<UUID, Integer> lives) {
         // Invoked during plugin shutdown, saves in-memory config to disk
-        FileConfiguration LivesConfig = GetLivesConfig();
         for (Map.Entry<UUID, Integer> entry : lives.entrySet()) {
-            LivesConfig.set(entry.getKey() + ".lives", entry.getValue());
+            livesConfig.set(entry.getKey() + ".lives", entry.getValue());
         }
-        SetLivesConfig(LivesConfig);
+        setLivesConfig(livesConfig);
     }
 
     public boolean naturalRegEnabled() {

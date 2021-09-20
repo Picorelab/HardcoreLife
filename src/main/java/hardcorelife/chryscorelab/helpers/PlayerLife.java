@@ -1,5 +1,6 @@
 package hardcorelife.chryscorelab.helpers;
 
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
 import hardcorelife.chryscorelab.Touchy;
@@ -15,6 +16,19 @@ public class PlayerLife {
     public static void initPlayer(Player player) {
         // Triggers the player data to be loaded from config.yml
         getLives(player);
+    }
+
+    public static void revivePlayer(Player player) {
+        // Force-respawn a player without altering their life count
+        // Mainly used when reviving a player who experiences permadeath
+        player.setGameMode(GameMode.SURVIVAL);
+
+        addLife(player);
+        player.setHealth(0);
+
+        // Re-enable movement
+        player.setWalkSpeed(0.2f);
+        player.setFlySpeed(0.1f);
     }
 
     public static int getLives(Player player) {

@@ -1,14 +1,20 @@
 package hardcorelife.chryscorelab.commands;
 
+import org.bukkit.GameMode;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
+import org.bukkit.plugin.PluginManager;
 import org.jetbrains.annotations.NotNull;
 
 import hardcorelife.chryscorelab.Touchy;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
 
 public class SetLives implements CommandExecutor {
 
@@ -22,11 +28,10 @@ public class SetLives implements CommandExecutor {
         Player player;
         String numArg;
         int newCount;
+        int oldCount;
 
         // Usage: /setlives [player] <value>
         // Must be a number greater than 0
-
-        // TODO - Handle when a player's life count hits 0, then is increased
 
         if (args.length == 2) {
             // Set another player's life count
@@ -58,9 +63,35 @@ public class SetLives implements CommandExecutor {
             return false;
         }
 
+        oldCount = PlayerLife.getLives(player);
         PlayerLife.forceSetLives(player, newCount);
         sender.sendMessage("Set " + player.getName() + "'s life count to: " + numArg);
         player.sendMessage(sender.getName() + " has changed your life count to: " + numArg);
+
+        // Handle reviving a player/server
+        if (oldCount == 0 && newCount > 0) {
+            if (touchy.globalLivesEnabled()) {
+                // Handle server life refresh
+                server.setDefaultGameMode(GameMode.SURVIVAL);
+
+                // Revive all players
+                for (Player p : server.getOnlinePlayers()) {
+                    PlayerLife.revivePlayer(p);
+                }
+
+                // Restrict resetserver permission
+                PluginManager pm = server.getPluginManager();
+                Permission resetserver = pm.getPermission("hardcorelife.resetserver");
+                resetserver.setDefault(PermissionDefault.FALSE);
+
+                TextComponent reset_comp = Component
+                        .text("The server's life count has been increased to: " + String.valueOf(newCount));
+                server.broadcast(reset_comp);
+            } else {
+                // Revive the player without altering life count
+                PlayerLife.revivePlayer(player);
+            }
+        }
 
         return true;
     }
