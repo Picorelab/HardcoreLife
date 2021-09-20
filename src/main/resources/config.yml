@@ -1,5 +1,5 @@
-starting_lives: 3
-global_lives: true # true : Players will share lives with the server | False : Players will have their own lives
+starting_lives: 3 # Number of lives with which the players or server will start
+global_lives: true # true : Players will share lives with the server | false : Players will have their own lives
 #death_movement: true # Allow movement after hitting permadeath. If unset, defaults to the value of global_lives
-natural_regeneration: true # false : the gamerule is disabled. This should be false, if you want the hardcore mode
-language: en_EN # English by Default
+natural_regeneration: true # Enable or disable natural regeneration for all worlds. For the most hardcore experience, set this to 'false'
+language: en_EN # For changing the language of the plugin - NOT FULLY SUPPORTED
