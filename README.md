@@ -2,15 +2,14 @@
 
 [![HardcoreLife](https://www.spigotmc.org/data/resource_icons/91/91375.jpg?1618568731)](https://dev.bukkit.org/projects/hardcorelife)
 
-Minecraft Plugin for an Hardcore survival multiplayer with life system
-with 2 options :
+Minecraft Plugin for a Hardcore survival multiplayer with life system with 2 options:
 
-- Global Lives, the server have lives, if player die, the server lost a life
-- Player Lives, Players have their own lives
+- Global Lives: The server shares lives wit hall players. If a player dies, everyone loses a life.
+- Player Lives: Players have their own set of lives.
 
 A detailed wiki can be found [here](https://github.com/Chryscorelab/HardcoreLife/wiki/Welcome-aboard)
 
-Our plugin can be found here :
+Our plugin can also be found here:
 
 On [Github](https://github.com/Chryscorelab/HardcoreLife/releases)
 
