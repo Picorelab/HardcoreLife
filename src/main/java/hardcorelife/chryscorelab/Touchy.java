@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 import org.apache.commons.io.FileUtils;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -60,6 +61,8 @@ public final class Touchy extends JavaPlugin {
         pm.registerEvents(new PlayerJoinServer(), this);
         pm.registerEvents(new WorldLoad(), this);
 
+        // Setup bStats
+        new Metrics(this, 12723);
     }
 
     @Override
