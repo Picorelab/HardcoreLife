@@ -43,6 +43,8 @@ Despite the name, this plugin does not support setting `hardcore=true` in server
 
 Please feel free to open an issue [here](https://github.com/Chryscorelab/HardcoreLife/issues)! We welcome new suggestions and always appreciate bug reports.
 
+If you're not sure where to start, or would like to helpo contribute to the proceject, check out our [Contributing guidelines](./CONTRIBUTING.md).
+
 ## TODO & future plan
 
 You can follow ours plan and our todo list [here](https://github.com/Chryscorelab/HardcoreLife/projects).
