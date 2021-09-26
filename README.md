@@ -63,4 +63,4 @@ Everyone is permitted to copy and distribute verbatim copies
 of this license document, but changing it is not allowed.
 
 
-[IMG]https://bstats.org/signatures/bukkit/HardcoreLife.svg[/IMG]
+![bstats](https://bstats.org/signatures/bukkit/HardcoreLife.svg)
