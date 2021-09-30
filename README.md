@@ -61,3 +61,6 @@ More simple : [https://choosealicense.com/licenses/gpl-3.0/#](https://choosealic
 Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
 Everyone is permitted to copy and distribute verbatim copies
 of this license document, but changing it is not allowed.
+
+
+![bstats](https://bstats.org/signatures/bukkit/HardcoreLife.svg)
