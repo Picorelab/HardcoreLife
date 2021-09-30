@@ -25,10 +25,17 @@ public class HardcorePermadeath implements Listener {
         Player player = event.getPlayer();
 
         if (server.isHardcore() && PlayerLife.getLives(player) > 0 && event.getNewGameMode() == GameMode.SPECTATOR) {
-            // Check if inside spawn radius, likely due to respawn event.
-            // Allows spectator mode to be set outside spawn.
-            if (player.getLocation().distanceSquared(player.getWorld().getSpawnLocation()) < Math
-                    .pow(server.getSpawnRadius(), 2)) {
+            // Check if within the spawn radius or near bed, likely due to respawn event.
+            // Allows spectator mode to be set outside of spawn location.
+            boolean isNearSpawn = player.getLocation().distanceSquared(player.getWorld().getSpawnLocation()) < Math
+                    .pow(server.getSpawnRadius(), 2);
+
+            boolean isNearBed = false;
+            if (player.getBedSpawnLocation() != null) {
+                isNearBed = player.getLocation().distanceSquared(player.getBedSpawnLocation()) < 3;
+            }
+
+            if (isNearSpawn || isNearBed) {
                 event.setCancelled(true);
                 logger.info("Cancelled permadeath event for " + player.getName());
             }
