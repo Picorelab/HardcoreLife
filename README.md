@@ -7,7 +7,9 @@ Minecraft Plugin for a Hardcore survival multiplayer with life system with 2 opt
 - Global Lives: The server shares lives wit hall players. If a player dies, everyone loses a life.
 - Player Lives: Players have their own set of lives.
 
-A detailed wiki can be found [here](https://github.com/Chryscorelab/HardcoreLife/wiki/Home)
+**Supports [PaperMC](https://papermc.io/downloads) 1.16-1.17+**
+
+A detailed wiki can be found [here](https://github.com/Chryscorelab/HardcoreLife/wiki/Home).
 
 Our plugin can also be found here:
 
@@ -17,7 +19,9 @@ On [Bukkit](https://dev.bukkit.org/projects/hardcorelife)
 
 On [Curseforge](https://www.curseforge.com/minecraft/bukkit-plugins/hardcorelife)
 
-On [Spigotmc](https://www.spigotmc.org/resources/hardcore-life.91375/)
+On [PaperMC](https://papermc.io/forums/t/1-17-hardcorelife-minecraft-plugin-for-a-hardcore-survival-multiplayer-with-life-system/8953)
+
+On [SpigotMC](https://www.spigotmc.org/resources/hardcore-life.91375/)
 
 ---
 
