@@ -52,9 +52,6 @@ public class PlayerDeath implements Listener {
                 TextComponent reset_comp = Component
                         .text("Game over! When ready, use the '/resetserver' command to restart.");
                 server.broadcast(reset_comp);
-
-            } else {
-                respawnPlayer(player);
             }
 
         } else {
@@ -68,9 +65,6 @@ public class PlayerDeath implements Listener {
                 // Revive the player. Allows teleport to work
                 player.setHealth(20);
                 player.teleport(deathLocation);
-
-            } else {
-                respawnPlayer(player);
             }
         }
         // Prevent movement on death
@@ -79,11 +73,4 @@ public class PlayerDeath implements Listener {
             player.setWalkSpeed(0);
         }
     }
-
-    private static void respawnPlayer(Player player) {
-        // Handle respawning a new player, in a non-permadeath fashion
-        // TODO: This does not work when hardcore = true
-        player.setGameMode(server.getDefaultGameMode());
-    }
-
 }

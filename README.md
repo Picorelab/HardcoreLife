@@ -37,7 +37,7 @@ See the `config.yml` file of the plugin, more details in the [Wiki](https://gith
 
 ## Dependencies
 
-Despite the name, this plugin does not support setting `hardcore=true` in server.properties. If you'd like to have this as a feature, please let us know!
+No active dependencies at this time.
 
 ## Issue? Need help or have suggestions?
 

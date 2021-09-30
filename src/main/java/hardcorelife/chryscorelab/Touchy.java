@@ -16,6 +16,7 @@ import hardcorelife.chryscorelab.commands.Lives;
 import hardcorelife.chryscorelab.commands.ResetServer;
 import hardcorelife.chryscorelab.commands.SetLives;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
+import hardcorelife.chryscorelab.listeners.HardcorePermadeath;
 import hardcorelife.chryscorelab.listeners.PlayerDeath;
 import hardcorelife.chryscorelab.listeners.PlayerJoinServer;
 import hardcorelife.chryscorelab.listeners.WorldLoad;
@@ -60,6 +61,7 @@ public final class Touchy extends JavaPlugin {
         pm.registerEvents(new PlayerDeath(), this);
         pm.registerEvents(new PlayerJoinServer(), this);
         pm.registerEvents(new WorldLoad(), this);
+        pm.registerEvents(new HardcorePermadeath(), this);
 
         // Setup bStats
         new Metrics(this, 12723);
