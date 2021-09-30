@@ -13,15 +13,11 @@ A detailed wiki can be found [here](https://github.com/Chryscorelab/HardcoreLife
 
 Our plugin can also be found here:
 
-On [Github](https://github.com/Chryscorelab/HardcoreLife/releases) (recommended)
-
-On [Bukkit](https://dev.bukkit.org/projects/hardcorelife)
-
-On [Curseforge](https://www.curseforge.com/minecraft/bukkit-plugins/hardcorelife)
-
-On [PaperMC](https://papermc.io/forums/t/1-17-hardcorelife-minecraft-plugin-for-a-hardcore-survival-multiplayer-with-life-system/8953)
-
-On [SpigotMC](https://www.spigotmc.org/resources/hardcore-life.91375/)
+- [Github](https://github.com/Chryscorelab/HardcoreLife/releases) (recommended)
+- [Bukkit](https://dev.bukkit.org/projects/hardcorelife)
+- [Curseforge](https://www.curseforge.com/minecraft/bukkit-plugins/hardcorelife)
+- [PaperMC](https://papermc.io/forums/t/1-17-hardcorelife-minecraft-plugin-for-a-hardcore-survival-multiplayer-with-life-system/8953)
+- [SpigotMC](https://www.spigotmc.org/resources/hardcore-life.91375/)
 
 ---
 
