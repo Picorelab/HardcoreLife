@@ -1,4 +1,4 @@
-# HardcoreLife
+# HardcoreLife 2.1.2
 
 [![HardcoreLife](https://www.spigotmc.org/data/resource_icons/91/91375.jpg?1618568731)](https://dev.bukkit.org/projects/hardcorelife)
 
@@ -11,7 +11,7 @@ A detailed wiki can be found [here](https://github.com/Chryscorelab/HardcoreLife
 
 Our plugin can also be found here:
 
-On [Github](https://github.com/Chryscorelab/HardcoreLife/releases)
+On [Github](https://github.com/Chryscorelab/HardcoreLife/releases) (recommended)
 
 On [Bukkit](https://dev.bukkit.org/projects/hardcorelife)
 
