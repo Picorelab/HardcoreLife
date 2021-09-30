@@ -3,8 +3,7 @@ name: Question
 about: Ask a question!
 title: "[Question] Your question title"
 labels: question
-assignees: ''
-
+assignees: ""
 ---
 
 **Let us know what question(s) you have**
