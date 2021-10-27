@@ -2,4 +2,5 @@ starting_lives: 3 # Number of lives with which the players or server will start
 global_lives: true # true : Players will share lives with the server | false : Players will have their own lives
 #death_movement: true # Allow movement after hitting permadeath. If unset, defaults to the value of global_lives
 natural_regeneration: true # Enable or disable natural regeneration for all worlds. For the most hardcore experience, set this to 'false'
+server_life_scaling: 0 # Rate to add lives to the server as new players join. 1 will add a life for every 1 player, and 0.5 will add 1 for every 2 players. Only works when gloabl_lives: true
 language: en_EN # For changing the language of the plugin - NOT FULLY SUPPORTED

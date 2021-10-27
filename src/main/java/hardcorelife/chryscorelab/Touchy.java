@@ -167,6 +167,11 @@ public final class Touchy extends JavaPlugin {
         }
     }
 
+    public double getLifeScalingValue() {
+        // Returns the server_life_scaling value from config.yml
+        return config.getDouble("server_life_scaling");
+    }
+
     public int getPlayerLivesConfig(UUID uuid) {
         // Gets the number of lives a player has from config.yml
         // If no data is set, the default is returned
