@@ -45,6 +45,8 @@ public class PlayerJoinServer implements Listener {
                     + " live(s) remaining");
         }
 
-        LifeScaling.checkLifeScaling();
+        if (!player.hasPlayedBefore()) {
+            LifeScaling.checkLifeScaling();
+        }
     }
 }
