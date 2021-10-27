@@ -19,24 +19,26 @@ public class Lives implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
             @NotNull String[] args) {
 
-        if (args.length > 0) {
-            Player player = server.getPlayer(args[0]);
+        if (touchy.globalLivesEnabled()) {
+            sender.sendMessage("The server has " + PlayerLife.getServerLives() + " live(s) left.");
+        } else {
+            if (args.length > 0) {
+                Player player = server.getPlayer(args[0]);
 
-            if (player instanceof Player) {
-                sender.sendMessage(player.getName() + " has " + PlayerLife.getLives(player) + " live(s) left.");
+                if (player instanceof Player) {
+                    sender.sendMessage(player.getName() + " has " + PlayerLife.getLives(player) + " live(s) left.");
+                } else {
+                    sender.sendMessage("ERROR: Unknown player '" + args[0] + "'");
+                    return false;
+                }
+
+            } else if (sender instanceof Player) {
+                Player player = (Player) sender;
+                sender.sendMessage("You have " + PlayerLife.getLives(player) + " live(s) left.");
             } else {
-                sender.sendMessage("ERROR: Unknown player '" + args[0] + "'");
                 return false;
             }
-
-        } else if (sender instanceof Player) {
-            Player player = (Player) sender;
-
-            sender.sendMessage("You have " + PlayerLife.getLives(player) + " live(s) left.");
-        } else {
-            return false;
         }
-
         return true;
     }
 }
