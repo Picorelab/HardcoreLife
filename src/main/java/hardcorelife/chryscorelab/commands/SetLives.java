@@ -33,10 +33,20 @@ public class SetLives implements CommandExecutor {
 
         if (args.length == 2) {
             // Set another player's life count
-            player = server.getPlayer(args[0]);
-            if (!(player instanceof Player) && !touchy.globalLivesEnabled()) {
-                sender.sendMessage("ERROR: Unknown player '" + args[0] + "'");
-                return false;
+            if (touchy.globalLivesEnabled()) {
+                return updateLives(args[1]);
+            } else {
+                player = server.getPlayer(args[0]);
+                if (!(player instanceof Player)) {
+                    sender.sendMessage("ERROR: Unknown player '" + args[0] + "'");
+                    return false;
+                } else {
+                    boolean success = updateLives(player, args[1]);
+                    if (success) {
+                        sender.sendMessage("Changed " + args[0] + "'s life count to " + args[1]);
+                    }
+                    return success;
+                }
             }
         } else if (args.length == 1) {
             if (touchy.globalLivesEnabled()) {
@@ -53,7 +63,6 @@ public class SetLives implements CommandExecutor {
         } else {
             return false;
         }
-        return true;
     }
 
     private boolean isPositiveInt(String val) {
