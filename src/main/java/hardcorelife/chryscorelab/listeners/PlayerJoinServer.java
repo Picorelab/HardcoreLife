@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import hardcorelife.chryscorelab.helpers.LifeScaling;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
 
 import java.io.IOException;
@@ -43,5 +44,7 @@ public class PlayerJoinServer implements Listener {
             player.sendMessage("Welcome back aboard " + player.getName() + "! You have " + PlayerLife.getLives(player)
                     + " live(s) remaining");
         }
+
+        LifeScaling.checkLifeScaling();
     }
 }
