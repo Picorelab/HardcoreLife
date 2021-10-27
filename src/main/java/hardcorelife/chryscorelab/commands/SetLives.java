@@ -26,26 +26,26 @@ public class SetLives implements CommandExecutor {
             @NotNull String[] args) {
 
         Player player;
-        String numArg;
-        int newCount;
-        int oldCount;
 
         // Usage: /setlives [player] <value>
         // Must be a number greater than 0
+        // Player only needed when global_lives is disabled
 
         if (args.length == 2) {
             // Set another player's life count
             player = server.getPlayer(args[0]);
-            if (!(player instanceof Player)) {
+            if (!(player instanceof Player) && !touchy.globalLivesEnabled()) {
                 sender.sendMessage("ERROR: Unknown player '" + args[0] + "'");
                 return false;
             }
-            numArg = args[1];
         } else if (args.length == 1) {
-            // Set the sender's life count
-            if (sender instanceof Player) {
+            if (touchy.globalLivesEnabled()) {
+                // Set the server's life count
+                return updateLives(args[0]);
+            } else if (sender instanceof Player) {
+                // Set the sender's life count
                 player = (Player) sender;
-                numArg = args[0];
+                return updateLives(player, args[0]);
             } else {
                 sender.sendMessage("ERROR: Player and value must be specified.");
                 return false;
@@ -53,47 +53,70 @@ public class SetLives implements CommandExecutor {
         } else {
             return false;
         }
+        return true;
+    }
 
+    private boolean isPositiveInt(String val) {
         try {
-            newCount = Integer.parseInt(numArg);
-            if (newCount < 1)
+            if (Integer.parseInt(val) < 1) {
                 throw new java.lang.NumberFormatException();
+            }
         } catch (NumberFormatException e) {
-            sender.sendMessage("Invalid lives value: " + numArg);
             return false;
         }
-
-        oldCount = PlayerLife.getLives(player);
-        PlayerLife.forceSetLives(player, newCount);
-        sender.sendMessage("Set " + player.getName() + "'s life count to: " + numArg);
-        player.sendMessage(sender.getName() + " has changed your life count to: " + numArg);
-
-        // Handle reviving a player/server
-        if (oldCount == 0 && newCount > 0) {
-            if (touchy.globalLivesEnabled()) {
-                // Handle server life refresh
-                server.setDefaultGameMode(GameMode.SURVIVAL);
-
-                // Revive all players
-                for (Player p : server.getOnlinePlayers()) {
-                    PlayerLife.revivePlayer(p);
-                }
-
-                // Restrict resetserver permission
-                PluginManager pm = server.getPluginManager();
-                Permission resetserver = pm.getPermission("hardcorelife.resetserver");
-                resetserver.setDefault(PermissionDefault.FALSE);
-
-                TextComponent reset_comp = Component
-                        .text("The server's life count has been increased to: " + String.valueOf(newCount));
-                server.broadcast(reset_comp);
-            } else {
-                // Revive the player without altering life count
-                PlayerLife.revivePlayer(player);
-            }
-        }
-
         return true;
+    }
+
+    private boolean updateLives(Player player, String lifeArg) {
+        if (!isPositiveInt(lifeArg)) {
+            return false;
+        }
+        int lifeCount = Integer.parseInt(lifeArg);
+        int oldCount = PlayerLife.getLives(player);
+        PlayerLife.forceSetLives(player, lifeCount);
+        player.sendMessage("Your life count has been changed to: " + String.valueOf(lifeCount));
+        if (oldCount == 0) {
+            revivePlayer(player);
+        }
+        return true;
+    }
+
+    private boolean updateLives(String lifeArg) {
+        if (!isPositiveInt(lifeArg)) {
+            return false;
+        }
+        int lifeCount = Integer.parseInt(lifeArg);
+        int oldCount = PlayerLife.getServerLives();
+        PlayerLife.forceSetServerLives(lifeCount);
+        TextComponent updateComp = Component
+                .text("The server's life count has been changed to: " + String.valueOf(lifeCount));
+        server.broadcast(updateComp);
+        if (oldCount == 0) {
+            reviveServer();
+        }
+        return true;
+    }
+
+    private void revivePlayer(Player player) {
+        // Revive the player without altering life count
+        PlayerLife.revivePlayer(player);
+    }
+
+    private void reviveServer() {
+        if (touchy.globalLivesEnabled()) {
+            // Handle server life refresh
+            server.setDefaultGameMode(GameMode.SURVIVAL);
+
+            // Revive all players
+            for (Player p : server.getOnlinePlayers()) {
+                PlayerLife.revivePlayer(p);
+            }
+
+            // Restrict resetserver permission
+            PluginManager pm = server.getPluginManager();
+            Permission resetserver = pm.getPermission("hardcorelife.resetserver");
+            resetserver.setDefault(PermissionDefault.FALSE);
+        }
     }
 
 }
