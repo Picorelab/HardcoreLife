@@ -17,8 +17,8 @@ public class LifeScaling {
     public static void checkLifeScaling() throws UnsupportedOperationException {
         // Checks to see if lifescaling should be triggered
 
-        if (!touchy.globalLivesEnabled()) {
-            // Function was called in the wrong context
+        if (!touchy.globalLivesEnabled() || PlayerLife.getServerLives() == 0) {
+            // Should not revive a permadeath server
             return;
         }
 
