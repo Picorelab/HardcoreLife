@@ -40,6 +40,18 @@ public class PlayerLife {
         return lives.get(getUUID(player));
     }
 
+    public static int getServerLives() {
+        return lives.get(getUUID());
+    }
+
+    public static void forceSetServerLives(int lifeCount) {
+        if (lifeCount < 0) {
+            lifeCount = 0;
+        }
+        lives.put(getUUID(), lifeCount);
+        touchy.savePlayerLifeConfig(getUUID(), lifeCount);
+    }
+
     private static int getConfigLives(Player player) {
         // Pulls the current number of lives for a player from the config
         return touchy.getPlayerLivesConfig(getUUID(player));
@@ -93,6 +105,10 @@ public class PlayerLife {
             return new UUID(0, 0);
         else
             return player.getUniqueId();
+    }
+
+    private static UUID getUUID() {
+        return new UUID(0, 0);
     }
 
 }
