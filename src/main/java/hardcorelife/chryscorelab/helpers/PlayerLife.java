@@ -35,42 +35,60 @@ public class PlayerLife {
         // Get the current number of lives for a player
         // Will pull player data from the config, if not already loaded
         if (!lives.containsKey(getUUID(player))) {
-            setLives(player, getConfigLives(player));
+            setLives(getUUID(player), touchy.getPlayerLivesConfig(getUUID(player)));
         }
         return lives.get(getUUID(player));
     }
 
-    private static int getConfigLives(Player player) {
-        // Pulls the current number of lives for a player from the config
-        return touchy.getPlayerLivesConfig(getUUID(player));
+    public static int getServerLives() {
+        if (!lives.containsKey(getUUID())) {
+            setLives(getUUID(), touchy.getPlayerLivesConfig(getUUID()));
+        }
+        return lives.get(getUUID());
+    }
+
+    public static int addServerLife() {
+        // Adds a life to the server
+        int finalLives = getServerLives() + 1;
+        forceSetServerLives(finalLives);
+        return finalLives;
+    }
+
+    public static void forceSetServerLives(int lifeCount) {
+        if (lifeCount < 0) {
+            lifeCount = 0;
+        }
+        getServerLives(); // Ensure life configs are loaded
+        lives.put(getUUID(), lifeCount);
+        touchy.savePlayerLifeConfig(getUUID(), lifeCount);
     }
 
     public static int addLife(Player player) {
         // Adds a life to a player
         int finalLives = getLives(player) + 1;
-        setLives(player, finalLives);
+        setLives(getUUID(player), finalLives);
         return finalLives;
     }
 
     public static int removeLife(Player player) {
         // Removes a life from a player
         int finalLives = getLives(player) - 1;
-        setLives(player, finalLives);
+        setLives(getUUID(player), finalLives);
         return finalLives;
     }
 
     public static void forceSetLives(Player player, int lifeCount) {
         // Force set life value
-        setLives(player, lifeCount);
+        setLives(getUUID(player), lifeCount);
     }
 
-    private static void setLives(Player player, int lifeCount) {
+    private static void setLives(UUID uuid, int lifeCount) {
         // Updates the player's life count, then saves configs
         if (lifeCount < 0) {
             lifeCount = 0;
         }
-        lives.put(getUUID(player), lifeCount);
-        touchy.savePlayerLifeConfig(getUUID(player), lifeCount);
+        lives.put(uuid, lifeCount);
+        touchy.savePlayerLifeConfig(uuid, lifeCount);
     }
 
     public static void saveLivesData() {
@@ -93,6 +111,10 @@ public class PlayerLife {
             return new UUID(0, 0);
         else
             return player.getUniqueId();
+    }
+
+    private static UUID getUUID() {
+        return new UUID(0, 0);
     }
 
 }
