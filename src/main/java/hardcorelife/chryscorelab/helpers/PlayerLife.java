@@ -44,6 +44,13 @@ public class PlayerLife {
         return lives.get(getUUID());
     }
 
+    public static int addServerLife() {
+        // Adds a life to the server
+        int finalLives = getServerLives() + 1;
+        forceSetServerLives(finalLives);
+        return finalLives;
+    }
+
     public static void forceSetServerLives(int lifeCount) {
         if (lifeCount < 0) {
             lifeCount = 0;
