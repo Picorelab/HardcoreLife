@@ -24,15 +24,17 @@ public class LifeScaling {
 
         int totalPlayers = server.getOfflinePlayers().length;
         double lifeScaling = touchy.getLifeScalingValue();
-
         double lastVal = (totalPlayers - 1) * lifeScaling;
         double currentVal = totalPlayers * lifeScaling;
 
         // If the player-to-scaling ratio has crossed a whole-number threshold
         if (lastVal < (int) currentVal) {
-            TextComponent updateComp = Component.text("A life was added to the server!");
+            int delta = (int) currentVal - (int) lastVal;
+            for (int i = 0; delta > i; i++) {
+                PlayerLife.addServerLife();
+            }
+            TextComponent updateComp = Component.text(String.valueOf(delta) + " live(s) were added to the server!");
             server.broadcast(updateComp);
         }
     }
-
 }
