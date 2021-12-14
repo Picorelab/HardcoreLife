@@ -64,7 +64,7 @@ public class PlayerDeath implements Listener {
                 // handle player permadeath
                 TextComponent component = Component.text(player.getName() + " has run out of lives.");
                 server.broadcast(component);
-                player.setGameMode(GameMode.SPECTATOR);
+                player.setGameMode(touchy.getGameModePermaDeath());
                 // Revive the player. Allows teleport to work
                 player.setHealth(20);
                 player.teleport(deathLocation);
@@ -72,7 +72,7 @@ public class PlayerDeath implements Listener {
                 // FIXME: *probably not* if player is in spectator mode with death movement =
                 // true, and return this to false, the player in spectator mode, can always move
                 // Prevent movement on death
-                if (touchy.deathMovementEnabled() == false) {
+                if (touchy.deathMovementEnabled() == false && touchy.getGameModePermaDeath() != GameMode.SPECTATOR) {
                     // server.getConsoleSender().sendMessage("[Hardcorelife] Preventing movement on
                     // death.");
                     // server.getConsoleSender().sendMessage("[Hardcorelife]" +

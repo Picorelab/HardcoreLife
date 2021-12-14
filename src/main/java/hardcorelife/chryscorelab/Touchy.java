@@ -1,5 +1,6 @@
 package hardcorelife.chryscorelab;
 
+import org.bukkit.GameMode;
 import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -207,5 +208,11 @@ public final class Touchy extends JavaPlugin {
         else{
             return config.getBoolean("kill_gain_lives");
         }
+    }
+
+    public GameMode getGameModePermaDeath(){
+        // Returns the value of gamemode_on_death from config.yml
+        return GameMode.valueOf(config.getString("gamemode_on_death"));
+
     }
 }
