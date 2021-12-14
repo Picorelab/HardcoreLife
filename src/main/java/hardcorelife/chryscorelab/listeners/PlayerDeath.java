@@ -69,22 +69,38 @@ public class PlayerDeath implements Listener {
                 player.setHealth(20);
                 player.teleport(deathLocation);
 
-                //FIXME: *probably not* if player is in spectator mode with death movement = true, and return this to false, the player in spectator mode, can always move
+                // FIXME: *probably not* if player is in spectator mode with death movement =
+                // true, and return this to false, the player in spectator mode, can always move
                 // Prevent movement on death
                 if (touchy.deathMovementEnabled() == false) {
-                    //server.getConsoleSender().sendMessage("[Hardcorelife] Preventing movement on death.");
-                    //server.getConsoleSender().sendMessage("[Hardcorelife]" + touchy.deathMovementEnabled());
+                    // server.getConsoleSender().sendMessage("[Hardcorelife] Preventing movement on
+                    // death.");
+                    // server.getConsoleSender().sendMessage("[Hardcorelife]" +
+                    // touchy.deathMovementEnabled());
                     player.setFlySpeed(0);
                     player.setWalkSpeed(0);
-                } 
-                /*else { //TODO - just debug thing, should not be used in production
-                    server.getConsoleSender().sendMessage("[Hardcorelife] Movement on death is disabled.");
-                    server.getConsoleSender().sendMessage("[Hardcorelife]" + touchy.deathMovementEnabled());
-                    player.setFlySpeed(0.1f);
-                    player.setWalkSpeed(0.2f);
-                } */
+                }
+                /*
+                 * else { //TODO - just debug thing, should not be used in production
+                 * server.getConsoleSender().
+                 * sendMessage("[Hardcorelife] Movement on death is disabled.");
+                 * server.getConsoleSender().sendMessage("[Hardcorelife]" +
+                 * touchy.deathMovementEnabled());
+                 * player.setFlySpeed(0.1f);
+                 * player.setWalkSpeed(0.2f);
+                 * }
+                 */
+
             }
 
+        }
+        // FIXME - test this
+        if (touchy.killGainLivesEnabled()) {
+            if (player.getKiller() != null) {
+                Player killer = player.getKiller();
+                PlayerLife.addLife(killer);
+                killer.sendMessage("You have gained a life !");
+            }
         }
 
     }

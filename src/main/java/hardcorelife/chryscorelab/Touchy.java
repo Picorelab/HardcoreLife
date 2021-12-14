@@ -198,4 +198,14 @@ public final class Touchy extends JavaPlugin {
         // Returns the value of natural_regeneration from config.yml
         return getConfig().getBoolean("natural_regeneration", false);
     }
+
+    public boolean killGainLivesEnabled() {
+        // Returns the value of kill_gain_lives from config.yml
+        if (globalLivesEnabled()){
+            return false;
+        }
+        else{
+            return config.getBoolean("kill_gain_lives");
+        }
+    }
 }
