@@ -1,4 +1,4 @@
-# HardcoreLife 2.2.0
+# HardcoreLife 2.2.1 (1.18.1 backport, nightly build, should not be used !)
 
 [![HardcoreLife](https://www.spigotmc.org/data/resource_icons/91/91375.jpg?1618568731)](https://dev.bukkit.org/projects/hardcorelife)
 

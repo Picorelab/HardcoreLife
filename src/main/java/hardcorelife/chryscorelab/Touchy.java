@@ -160,11 +160,13 @@ public final class Touchy extends JavaPlugin {
 
     public boolean deathMovementEnabled() {
         // Returns the death_movement value from config.yml
-        if (config.isSet("death_movement")) {
-            return config.getBoolean("death_movement");
-        } else {
-            return globalLivesEnabled();
+        if (globalLivesEnabled()){
+            return false;
         }
+        else{
+            return config.getBoolean("death_movement");
+        }
+
     }
 
     public double getLifeScalingValue() {
