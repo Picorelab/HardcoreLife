@@ -70,7 +70,7 @@ public class PlayerDeath implements Listener {
                 player.teleport(deathLocation);
 
                 // Prevent movement on death
-                if (touchy.deathMovementEnabled() == false && touchy.getGameModePermaDeath() != GameMode.SPECTATOR) {
+                if (touchy.deathMovementEnabled() == false) {
                     player.setFlySpeed(0);
                     player.setWalkSpeed(0);
                 }
