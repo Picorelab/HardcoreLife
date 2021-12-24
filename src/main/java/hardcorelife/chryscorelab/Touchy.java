@@ -210,9 +210,8 @@ public final class Touchy extends JavaPlugin {
         }
     }
 
-    public GameMode getGameModePermaDeath(){
+    public GameMode getGameModePermaDeath() {
         // Returns the value of gamemode_on_death from config.yml
-        return GameMode.valueOf(config.getString("gamemode_on_death"));
-
+        return GameMode.valueOf(config.getString("gamemode_on_permadeath"));
     }
 }
