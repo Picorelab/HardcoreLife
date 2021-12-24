@@ -161,10 +161,9 @@ public final class Touchy extends JavaPlugin {
 
     public boolean deathMovementEnabled() {
         // Returns the death_movement value from config.yml
-        if (globalLivesEnabled()){
+        if (globalLivesEnabled()) {
             return false;
-        }
-        else{
+        } else {
             return config.getBoolean("death_movement");
         }
 
@@ -202,10 +201,9 @@ public final class Touchy extends JavaPlugin {
 
     public boolean killGainLivesEnabled() {
         // Returns the value of kill_gain_lives from config.yml
-        if (globalLivesEnabled()){
+        if (globalLivesEnabled()) {
             return false;
-        }
-        else{
+        } else {
             return config.getBoolean("kill_gain_lives");
         }
     }
