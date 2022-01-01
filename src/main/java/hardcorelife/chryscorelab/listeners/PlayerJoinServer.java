@@ -38,8 +38,15 @@ public class PlayerJoinServer implements Listener {
 
         // TODO - Show a history of past death events
         if (touchy.globalLivesEnabled()) {
-            player.sendMessage(" Welcome back aboard " + player.getName() + "! The server has "
-                    + PlayerLife.getLives(player) + " live(s) remaining");
+            // If server lives > 0
+            if (PlayerLife.getLives(player) > 0) {
+                // Show remaining lives
+                player.sendMessage("The server has " + PlayerLife.getLives(player) + " lives remaining.");
+            } else {
+                // Show game over
+                player.sendMessage("Oh no :c Game over! When ready, use the '/resetserver' command to restart.");
+            }
+
         } else {
             player.sendMessage("Welcome back aboard " + player.getName() + "! You have " + PlayerLife.getLives(player)
                     + " live(s) remaining");

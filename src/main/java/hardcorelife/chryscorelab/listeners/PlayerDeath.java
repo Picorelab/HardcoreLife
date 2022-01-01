@@ -76,13 +76,12 @@ public class PlayerDeath implements Listener {
                 }
 
             }
-
-        }
-        if (touchy.killGainLivesEnabled()) {
-            if (player.getKiller() != null) {
-                Player killer = player.getKiller();
-                PlayerLife.addLife(killer);
-                killer.sendMessage("You have gained a life !");
+            if (touchy.killGainLivesEnabled()) {
+                if (player.getKiller() != null) {
+                    Player killer = player.getKiller();
+                    PlayerLife.addLife(killer);
+                    killer.sendMessage("You have gained a life !");
+                }
             }
         }
 
