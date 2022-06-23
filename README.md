@@ -1,4 +1,4 @@
-# HardcoreLife 2.2.1
+# HardcoreLife 2.2.2 #Nighty build, should not use this version, backport to 1.19
 
 [![HardcoreLife](https://www.spigotmc.org/data/resource_icons/91/91375.jpg?1618568731)](https://dev.bukkit.org/projects/hardcorelife)
 
@@ -7,7 +7,7 @@ Minecraft Plugin for a Hardcore survival multiplayer with life system with 2 opt
 - Global Lives: The server shares lives wit hall players. If a player dies, everyone loses a life.
 - Player Lives: Players have their own set of lives.
 
-**Supports [PaperMC](https://papermc.io/downloads) 1.16-1.18.2**
+**Supports [PaperMC](https://papermc.io/downloads) 1.16-1.19**
 
 A detailed wiki can be found [here](https://github.com/Chryscorelab/HardcoreLife/wiki/Home).
 
