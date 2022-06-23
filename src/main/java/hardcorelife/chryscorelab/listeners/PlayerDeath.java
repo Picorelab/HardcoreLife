@@ -2,6 +2,9 @@ package hardcorelife.chryscorelab.listeners;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+
+import java.io.Console;
+
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Server;
@@ -61,16 +64,26 @@ public class PlayerDeath implements Listener {
                 // handle player permadeath
                 TextComponent component = Component.text(player.getName() + " has run out of lives.");
                 server.broadcast(component);
-                player.setGameMode(GameMode.SPECTATOR);
+                player.setGameMode(touchy.getGameModePermaDeath());
                 // Revive the player. Allows teleport to work
                 player.setHealth(20);
                 player.teleport(deathLocation);
+
+                // Prevent movement on death
+                if (touchy.deathMovementEnabled() == false) {
+                    player.setFlySpeed(0);
+                    player.setWalkSpeed(0);
+                }
+
+            }
+            if (touchy.killGainLivesEnabled()) {
+                if (player.getKiller() != null) {
+                    Player killer = player.getKiller();
+                    PlayerLife.addLife(killer);
+                    killer.sendMessage("You have gained a life !");
+                }
             }
         }
-        // Prevent movement on death
-        if (!touchy.deathMovementEnabled()) {
-            player.setFlySpeed(0);
-            player.setWalkSpeed(0);
-        }
+
     }
 }
