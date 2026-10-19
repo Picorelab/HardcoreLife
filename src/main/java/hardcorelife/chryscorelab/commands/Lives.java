@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import hardcorelife.chryscorelab.Touchy;
+import hardcorelife.chryscorelab.helpers.Lang;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
 
 public class Lives implements CommandExecutor {
@@ -20,21 +21,22 @@ public class Lives implements CommandExecutor {
             @NotNull String[] args) {
 
         if (touchy.globalLivesEnabled()) {
-            sender.sendMessage("The server has " + PlayerLife.getServerLives() + " live(s) left.");
+            sender.sendMessage(Lang.get(sender, "lives.server", "lives", PlayerLife.getServerLives()));
         } else {
             if (args.length > 0) {
                 Player player = server.getPlayer(args[0]);
 
                 if (player instanceof Player) {
-                    sender.sendMessage(player.getName() + " has " + PlayerLife.getLives(player) + " live(s) left.");
+                    sender.sendMessage(
+                            Lang.get(sender, "lives.player", "player", player.getName(), "lives", PlayerLife.getLives(player)));
                 } else {
-                    sender.sendMessage("ERROR: Unknown player '" + args[0] + "'");
+                    sender.sendMessage(Lang.get(sender, "error.unknown_player", "player", args[0]));
                     return false;
                 }
 
             } else if (sender instanceof Player) {
                 Player player = (Player) sender;
-                sender.sendMessage("You have " + PlayerLife.getLives(player) + " live(s) left.");
+                sender.sendMessage(Lang.get(sender, "lives.self", "lives", PlayerLife.getLives(player)));
             } else {
                 return false;
             }

@@ -1,0 +1,35 @@
+# HardcoreLife messages - Português (Brasil)
+# Os marcadores entre {chaves} são substituídos ao enviar a mensagem.
+# Chaves ausentes usam a mensagem padrão em inglês.
+
+lives:
+  server: "O servidor tem {lives} vida(s) restante(s)."
+  player: "{player} tem {lives} vida(s) restante(s)."
+  self: "Você tem {lives} vida(s) restante(s)."
+
+setlives:
+  changed_player: "O número de vidas de {player} foi alterado para {lives}"
+  changed_self: "Seu número de vidas foi alterado para: {lives}"
+  changed_server: "O número de vidas do servidor foi alterado para: {lives}"
+
+death:
+  server_remaining: "O servidor tem {lives} vida(s) restante(s)."
+  server_game_over: "Fim de jogo! Quando estiver pronto, use o comando '/resetserver' para reiniciar."
+  player_remaining: "Você tem {lives} vida(s) restante(s)."
+  player_out_of_lives: "{player} ficou sem vidas."
+  gained_life: "Você ganhou uma vida!"
+
+join:
+  server_remaining: "O servidor tem {lives} vida(s) restante(s)."
+  server_game_over: "Ah não :c Fim de jogo! Quando estiver pronto, use o comando '/resetserver' para reiniciar."
+  welcome: "Bem-vindo de volta a bordo, {player}! Você tem {lives} vida(s) restante(s)."
+
+life_scaling:
+  lives_added: "{lives} vida(s) foram adicionadas ao servidor!"
+
+reset:
+  kick: "O servidor está sendo reiniciado. Por favor, entre novamente."
+
+error:
+  unknown_player: "ERRO: Jogador desconhecido '{player}'"
+  player_and_value_required: "ERRO: O jogador e o valor devem ser especificados."

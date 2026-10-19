@@ -1,0 +1,35 @@
+# HardcoreLife messages - 日本語
+# {波括弧} 内のプレースホルダーは送信時に置き換えられます。
+# 存在しないキーはデフォルトの英語メッセージが使用されます。
+
+lives:
+  server: "サーバーの残りライフ: {lives}"
+  player: "{player} の残りライフ: {lives}"
+  self: "あなたの残りライフ: {lives}"
+
+setlives:
+  changed_player: "{player} のライフ数を {lives} に変更しました"
+  changed_self: "あなたのライフ数が {lives} に変更されました"
+  changed_server: "サーバーのライフ数が {lives} に変更されました"
+
+death:
+  server_remaining: "サーバーの残りライフ: {lives}"
+  server_game_over: "ゲームオーバー！準備ができたら '/resetserver' コマンドでリスタートしてください。"
+  player_remaining: "あなたの残りライフ: {lives}"
+  player_out_of_lives: "{player} のライフが尽きました。"
+  gained_life: "ライフを1つ獲得しました！"
+
+join:
+  server_remaining: "サーバーの残りライフ: {lives}"
+  server_game_over: "残念 :c ゲームオーバー！準備ができたら '/resetserver' コマンドでリスタートしてください。"
+  welcome: "おかえりなさい、{player}！残りライフ: {lives}"
+
+life_scaling:
+  lives_added: "サーバーにライフが {lives} 追加されました！"
+
+reset:
+  kick: "サーバーをリセットしています。再接続してください。"
+
+error:
+  unknown_player: "エラー: 不明なプレイヤー '{player}'"
+  player_and_value_required: "エラー: プレイヤーと値を指定してください。"

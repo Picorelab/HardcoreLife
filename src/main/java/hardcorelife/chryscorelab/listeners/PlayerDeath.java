@@ -1,7 +1,5 @@
 package hardcorelife.chryscorelab.listeners;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
 
 import java.io.Console;
 
@@ -17,6 +15,7 @@ import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.PluginManager;
 
 import hardcorelife.chryscorelab.Touchy;
+import hardcorelife.chryscorelab.helpers.Lang;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
 
 public class PlayerDeath implements Listener {
@@ -35,8 +34,7 @@ public class PlayerDeath implements Listener {
         int remainingLives = PlayerLife.getLives(player);
 
         if (touchy.globalLivesEnabled()) {
-            TextComponent component = Component.text("The server has " + remainingLives + " live(s) remaining.");
-            server.broadcast(component);
+            Lang.broadcast("death.server_remaining", "lives", remainingLives);
 
             if (remainingLives == 0) {
                 // Handle server permadeath
@@ -52,18 +50,15 @@ public class PlayerDeath implements Listener {
                 Permission resetserver = pm.getPermission("hardcorelife.resetserver");
                 resetserver.setDefault(PermissionDefault.TRUE);
 
-                TextComponent reset_comp = Component
-                        .text("Game over! When ready, use the '/resetserver' command to restart.");
-                server.broadcast(reset_comp);
+                Lang.broadcast("death.server_game_over");
             }
 
         } else {
-            player.sendMessage("You have " + remainingLives + " live(s) remaining.");
+            player.sendMessage(Lang.get(player, "death.player_remaining", "lives", remainingLives));
 
             if (remainingLives == 0) {
                 // handle player permadeath
-                TextComponent component = Component.text(player.getName() + " has run out of lives.");
-                server.broadcast(component);
+                Lang.broadcast("death.player_out_of_lives", "player", player.getName());
                 player.setGameMode(touchy.getGameModePermaDeath());
                 // Revive the player. Allows teleport to work
                 player.setHealth(20);
@@ -80,7 +75,7 @@ public class PlayerDeath implements Listener {
                 if (player.getKiller() != null) {
                     Player killer = player.getKiller();
                     PlayerLife.addLife(killer);
-                    killer.sendMessage("You have gained a life !");
+                    killer.sendMessage(Lang.get(killer, "death.gained_life"));
                 }
             }
         }

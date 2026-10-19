@@ -5,4 +5,5 @@ natural_regeneration: true  # Enable or disable natural regeneration for all wor
 kill_gain_lives: false      # Enable or disable gaining lives when you kill a player
 gamemode_on_permadeath: SPECTATOR  # Change gamemode to define when you die | Value : SPECTATOR | SURVIVAL | ADVENTURE | CREATIVE -> movements are active if =/ of spectator
 server_life_scaling: 0      # The number of lives to add when a new player joins. Supports decimal values. Requires global_lives: true
-language: en_EN             # For changing the language of the plugin - NOT FULLY SUPPORTED
+language: en_EN             # Plugin language. Bundled: en_EN | de_DE | es_ES | fr_FR | ja_JP | ko_KR | pl_PL | pt_BR | ru_RU | zh_CN. Add your own as plugins/Hardcorelife/lang/<language>.yml
+use_client_language: true   # true : Players see messages in their Minecraft client language, when available. Others use 'language' | false : Everyone uses 'language'

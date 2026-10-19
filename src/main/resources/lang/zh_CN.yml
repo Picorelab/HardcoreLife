@@ -1,0 +1,35 @@
+# HardcoreLife messages - 简体中文
+# {大括号} 中的占位符会在发送消息时被替换。
+# 缺失的键将使用默认的英文消息。
+
+lives:
+  server: "服务器还剩 {lives} 条命。"
+  player: "{player} 还剩 {lives} 条命。"
+  self: "你还剩 {lives} 条命。"
+
+setlives:
+  changed_player: "已将 {player} 的生命数设置为 {lives}"
+  changed_self: "你的生命数已更改为：{lives}"
+  changed_server: "服务器的生命数已更改为：{lives}"
+
+death:
+  server_remaining: "服务器还剩 {lives} 条命。"
+  server_game_over: "游戏结束！准备好后，使用 '/resetserver' 命令重新开始。"
+  player_remaining: "你还剩 {lives} 条命。"
+  player_out_of_lives: "{player} 的生命已耗尽。"
+  gained_life: "你获得了一条命！"
+
+join:
+  server_remaining: "服务器还剩 {lives} 条命。"
+  server_game_over: "哎呀 :c 游戏结束！准备好后，使用 '/resetserver' 命令重新开始。"
+  welcome: "欢迎回来，{player}！你还剩 {lives} 条命。"
+
+life_scaling:
+  lives_added: "服务器增加了 {lives} 条命！"
+
+reset:
+  kick: "服务器正在重置，请重新加入。"
+
+error:
+  unknown_player: "错误：未知玩家 '{player}'"
+  player_and_value_required: "错误：必须指定玩家和数值。"

@@ -35,6 +35,29 @@ More details [here](https://github.com/Chryscorelab/HardcoreLife/wiki/Commands)
 
 See the `config.yml` file of the plugin, more details in the [Wiki](https://github.com/Chryscorelab/HardcoreLife/wiki/Config-files)
 
+## Languages
+
+Players see messages in their own Minecraft client language when it's available. Otherwise they get the server language, set with `language` in `config.yml`. A player whose region isn't bundled gets the closest match (e.g. `de_at` uses `de_DE`, `pt_pt` uses `pt_BR`). Console messages and broadcasts to the console always use the server language. Set `use_client_language: false` to send everyone the server language.
+
+Bundled languages:
+
+- `en_EN` - English (default)
+- `de_DE` - Deutsch
+- `es_ES` - Español
+- `fr_FR` - Français
+- `ja_JP` - 日本語
+- `ko_KR` - 한국어
+- `pl_PL` - Polski
+- `pt_BR` - Português (Brasil)
+- `ru_RU` - Русский
+- `zh_CN` - 简体中文
+
+Translations other than English and French were machine-assisted; corrections from native speakers are very welcome.
+
+Language files are copied to `plugins/Hardcorelife/lang/` on startup and can be edited freely. To add a new language, copy `en_EN.yml` to a new file (e.g. `de_DE.yml`), translate the messages, and set `language: de_DE`. Any message missing from a language file falls back to English. Placeholders like `{player}` and `{lives}` are filled in automatically.
+
+Translations are welcome! Feel free to open a pull request adding a file under `src/main/resources/lang/`.
+
 ## Dependencies
 
 No active dependencies at this time.

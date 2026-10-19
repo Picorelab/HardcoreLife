@@ -1,0 +1,35 @@
+# HardcoreLife messages - Deutsch
+# Platzhalter in {Klammern} werden beim Senden der Nachricht ersetzt.
+# Fehlende Schlüssel verwenden die englische Standardnachricht.
+
+lives:
+  server: "Der Server hat noch {lives} Leben."
+  player: "{player} hat noch {lives} Leben."
+  self: "Du hast noch {lives} Leben."
+
+setlives:
+  changed_player: "Die Lebensanzahl von {player} wurde auf {lives} gesetzt"
+  changed_self: "Deine Lebensanzahl wurde geändert auf: {lives}"
+  changed_server: "Die Lebensanzahl des Servers wurde geändert auf: {lives}"
+
+death:
+  server_remaining: "Der Server hat noch {lives} Leben übrig."
+  server_game_over: "Spiel vorbei! Wenn ihr bereit seid, nutzt den Befehl '/resetserver', um neu zu starten."
+  player_remaining: "Du hast noch {lives} Leben übrig."
+  player_out_of_lives: "{player} hat keine Leben mehr."
+  gained_life: "Du hast ein Leben gewonnen!"
+
+join:
+  server_remaining: "Der Server hat noch {lives} Leben übrig."
+  server_game_over: "Oh nein :c Spiel vorbei! Wenn ihr bereit seid, nutzt den Befehl '/resetserver', um neu zu starten."
+  welcome: "Willkommen zurück an Bord, {player}! Du hast noch {lives} Leben übrig."
+
+life_scaling:
+  lives_added: "{lives} Leben wurden dem Server hinzugefügt!"
+
+reset:
+  kick: "Der Server wird zurückgesetzt. Bitte verbinde dich erneut."
+
+error:
+  unknown_player: "FEHLER: Unbekannter Spieler '{player}'"
+  player_and_value_required: "FEHLER: Spieler und Wert müssen angegeben werden."

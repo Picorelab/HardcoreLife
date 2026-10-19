@@ -5,8 +5,6 @@ import java.util.logging.Logger;
 import org.bukkit.Server;
 
 import hardcorelife.chryscorelab.Touchy;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
 
 public class LifeScaling {
 
@@ -33,8 +31,7 @@ public class LifeScaling {
             for (int i = 0; delta > i; i++) {
                 PlayerLife.addServerLife();
             }
-            TextComponent updateComp = Component.text(String.valueOf(delta) + " live(s) were added to the server!");
-            server.broadcast(updateComp);
+            Lang.broadcast("life_scaling.lives_added", "lives", delta);
         }
     }
 }

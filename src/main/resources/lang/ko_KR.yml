@@ -1,0 +1,35 @@
+# HardcoreLife messages - 한국어
+# {중괄호} 안의 자리 표시자는 메시지를 보낼 때 대체됩니다.
+# 누락된 키는 기본 영어 메시지를 사용합니다.
+
+lives:
+  server: "서버에 남은 목숨: {lives}개"
+  player: "{player}님의 남은 목숨: {lives}개"
+  self: "남은 목숨: {lives}개"
+
+setlives:
+  changed_player: "{player}님의 목숨을 {lives}개로 변경했습니다"
+  changed_self: "목숨이 {lives}개로 변경되었습니다"
+  changed_server: "서버의 목숨이 {lives}개로 변경되었습니다"
+
+death:
+  server_remaining: "서버에 남은 목숨: {lives}개"
+  server_game_over: "게임 오버! 준비가 되면 '/resetserver' 명령어로 다시 시작하세요."
+  player_remaining: "남은 목숨: {lives}개"
+  player_out_of_lives: "{player}님의 목숨이 모두 소진되었습니다."
+  gained_life: "목숨을 하나 얻었습니다!"
+
+join:
+  server_remaining: "서버에 남은 목숨: {lives}개"
+  server_game_over: "이런 :c 게임 오버! 준비가 되면 '/resetserver' 명령어로 다시 시작하세요."
+  welcome: "다시 오신 것을 환영합니다, {player}님! 남은 목숨: {lives}개"
+
+life_scaling:
+  lives_added: "서버에 목숨 {lives}개가 추가되었습니다!"
+
+reset:
+  kick: "서버를 초기화하는 중입니다. 다시 접속해 주세요."
+
+error:
+  unknown_player: "오류: 알 수 없는 플레이어 '{player}'"
+  player_and_value_required: "오류: 플레이어와 값을 지정해야 합니다."

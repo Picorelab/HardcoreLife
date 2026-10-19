@@ -1,21 +1,35 @@
-remain: "vie(s) restante(s)."
-server_has: "Le serveur a"
-player_have: "Vous avez"
-welcome: "Bon retour à bord"
-out_lives: "a épuisé toutes ses vies."
-must_op: "Vous devez avoir la permission pour utiliser cette commande."
-lives_left: "vie(s) restante(s)."
-has: "a"
-lifechange: "a changé votre vie, vous avez maintenant : "
+# HardcoreLife messages - Français
+# Les variables entre {accolades} sont remplacées lors de l'envoi du message.
+# Les clés manquantes utilisent le message anglais par défaut.
 
+lives:
+  server: "Le serveur a {lives} vie(s) restante(s)."
+  player: "{player} a {lives} vie(s) restante(s)."
+  self: "Vous avez {lives} vie(s) restante(s)."
+
+setlives:
+  changed_player: "Le nombre de vies de {player} a été changé à {lives}"
+  changed_self: "Votre nombre de vies a été changé à : {lives}"
+  changed_server: "Le nombre de vies du serveur a été changé à : {lives}"
+
+death:
+  server_remaining: "Le serveur a {lives} vie(s) restante(s)."
+  server_game_over: "Partie terminée ! Quand vous êtes prêts, utilisez la commande '/resetserver' pour recommencer."
+  player_remaining: "Vous avez {lives} vie(s) restante(s)."
+  player_out_of_lives: "{player} a épuisé toutes ses vies."
+  gained_life: "Vous avez gagné une vie !"
+
+join:
+  server_remaining: "Le serveur a {lives} vie(s) restante(s)."
+  server_game_over: "Oh non :c Partie terminée ! Quand vous êtes prêts, utilisez la commande '/resetserver' pour recommencer."
+  welcome: "Bon retour à bord {player} ! Vous avez {lives} vie(s) restante(s)."
+
+life_scaling:
+  lives_added: "{lives} vie(s) ont été ajoutée(s) au serveur !"
+
+reset:
+  kick: "Le serveur est en cours de réinitialisation. Veuillez vous reconnecter."
 
 error:
-  uknown: "ERROR : Unknown player"
-  specified: "ERROR: Player and value must be specified."
-  value: "Invalid lives value:"
-
-#MUST BE TESTED
-#set: "Régler"
-#life_add: "'s life count to:"
-
-test: "'La vie de' + player.getName() + ' a été augmenté à :'"
+  unknown_player: "ERREUR : Joueur inconnu '{player}'"
+  player_and_value_required: "ERREUR : Le joueur et la valeur doivent être spécifiés."

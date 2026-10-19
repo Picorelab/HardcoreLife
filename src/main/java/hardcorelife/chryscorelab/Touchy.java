@@ -16,13 +16,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 import hardcorelife.chryscorelab.commands.Lives;
 import hardcorelife.chryscorelab.commands.ResetServer;
 import hardcorelife.chryscorelab.commands.SetLives;
+import hardcorelife.chryscorelab.helpers.Lang;
 import hardcorelife.chryscorelab.helpers.PlayerLife;
 import hardcorelife.chryscorelab.listeners.HardcorePermadeath;
 import hardcorelife.chryscorelab.listeners.PlayerDeath;
 import hardcorelife.chryscorelab.listeners.PlayerJoinServer;
 import hardcorelife.chryscorelab.listeners.WorldLoad;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,6 +52,8 @@ public final class Touchy extends JavaPlugin {
         // Initialize config files
         livesConfig = getLivesConfig();
         config = getConfig();
+        Lang.load(this, config.getString("language", Lang.DEFAULT_LANGUAGE),
+                config.getBoolean("use_client_language", true));
 
         Objects.requireNonNull(getCommand("lives")).setExecutor(new Lives());
         Objects.requireNonNull(getCommand("setlives")).setExecutor(new SetLives());
@@ -87,9 +89,8 @@ public final class Touchy extends JavaPlugin {
         Logger logger = getServer().getLogger();
 
         // Kick all online players
-        TextComponent message = Component.text("The server is resetting. Please rejoin.");
         for (Player p : getServer().getOnlinePlayers()) {
-            p.kick(message);
+            p.kick(Component.text(Lang.get(p, "reset.kick")));
         }
 
         // Delete existing lives.yml

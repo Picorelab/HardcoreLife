@@ -1,19 +1,35 @@
-remain: "live(s) remaining."
-server_has: "The server has"
-player_have: "You have"
-welcome: "Welcome back aboard"
-out_lives: "has run out of lives."
-must_op: "You must have the permission to use this command."
-lives_left: "live(s) left."
-has: "has"
-lifechange: "has changed your life count to:"
+# HardcoreLife messages - English
+# Placeholders in {braces} are replaced when the message is sent.
+# Missing keys fall back to the default English message.
+
+lives:
+  server: "The server has {lives} live(s) left."
+  player: "{player} has {lives} live(s) left."
+  self: "You have {lives} live(s) left."
+
+setlives:
+  changed_player: "Changed {player}'s life count to {lives}"
+  changed_self: "Your life count has been changed to: {lives}"
+  changed_server: "The server's life count has been changed to: {lives}"
+
+death:
+  server_remaining: "The server has {lives} live(s) remaining."
+  server_game_over: "Game over! When ready, use the '/resetserver' command to restart."
+  player_remaining: "You have {lives} live(s) remaining."
+  player_out_of_lives: "{player} has run out of lives."
+  gained_life: "You have gained a life!"
+
+join:
+  server_remaining: "The server has {lives} live(s) remaining."
+  server_game_over: "Oh no :c Game over! When ready, use the '/resetserver' command to restart."
+  welcome: "Welcome back aboard {player}! You have {lives} live(s) remaining."
+
+life_scaling:
+  lives_added: "{lives} live(s) were added to the server!"
+
+reset:
+  kick: "The server is resetting. Please rejoin."
 
 error:
-  uknown: "ERROR : Unknown player"
-  specified: "ERROR: Player and value must be specified."
-  value: "Invalid lives value:"
-
-#MUST BE TESTED
-set: "Set"
-life_add: "'s life count to:"
-# -> msut_be_test: "'Set ' + player.getName() + "'s life count to: " + numArg"\"
+  unknown_player: "ERROR: Unknown player '{player}'"
+  player_and_value_required: "ERROR: Player and value must be specified."
